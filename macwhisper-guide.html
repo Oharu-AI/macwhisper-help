@@ -1,0 +1,1913 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MacWhisper Pro 完全操作ガイド — 各画面・項目解説</title>
+<style>
+  :root {
+    --ink: #1a1a17;
+    --paper: #f7f4ec;
+    --paper-deep: #efe9db;
+    --vermillion: #c4452f;
+    --sumi: #2c2a26;
+    --gold: #a8821f;
+    --line: #d8d0bf;
+    --muted: #565146;
+    --screen-bg: #1e1e1e;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ink: #f0ebe0;
+      --paper: #1a1a17;
+      --paper-deep: #242220;
+      --vermillion: #ff6b5a;
+      --sumi: #0d0c0a;
+      --gold: #d4af37;
+      --line: #3d3a34;
+      --muted: #c9bfb3;
+      --screen-bg: #111;
+    }
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Hiragino Mincho ProN", "Yu Mincho", serif;
+    line-height: 1.85;
+    -webkit-font-smoothing: antialiased;
+    letter-spacing: .02em;
+  }
+  .wrap { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--sumi);
+    color: #fff;
+    padding: 52px 0 44px;
+  }
+  .hero-mark {
+    font-family: "Hiragino Kaku Gothic ProN", sans-serif;
+    font-size: .72rem; letter-spacing: .4em;
+    color: var(--vermillion); font-weight: 700;
+    text-transform: uppercase; margin-bottom: 18px;
+  }
+  .hero h1 {
+    font-size: clamp(1.8rem, 5vw, 3rem);
+    font-weight: 600; line-height: 1.3;
+    color: #fff; margin-bottom: 10px;
+  }
+  .hero h1 em { color: var(--gold); font-style: normal; }
+  .hero .sub {
+    font-family: "Hiragino Kaku Gothic ProN", sans-serif;
+    font-size: .88rem; color: #a09880; margin-top: 14px;
+  }
+
+  /* ── TOC ── */
+  .toc-wrap {
+    background: var(--paper-deep);
+    border-bottom: 1px solid var(--line);
+    padding: 28px 0;
+  }
+  .toc-title {
+    font-family: "Hiragino Kaku Gothic ProN", sans-serif;
+    font-size: .72rem; letter-spacing: .3em;
+    color: var(--vermillion); font-weight: 700;
+    margin-bottom: 14px;
+  }
+  .toc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 6px 16px;
+  }
+  .toc-grid a {
+    font-family: "Hiragino Kaku Gothic ProN", sans-serif;
+    font-size: .84rem; color: var(--ink);
+    text-decoration: none;
+    padding: 4px 0;
+    border-bottom: 1px solid transparent;
+  }
+  .toc-grid a:hover { color: var(--vermillion); border-bottom-color: var(--vermillion); }
+  .toc-num { color: var(--gold); font-size: .72rem; margin-right: 6px; }
+
+  /* ── CHAPTER HEADER ── */
+  .chapter {
+    padding: 56px 0 0;
+    border-top: 3px solid var(--ink);
+    margin-top: 56px;
+  }
+  .chapter:first-of-type { margin-top: 0; border-top: none; padding-top: 48px; }
+  .ch-eyebrow {
+    font-family: "Hiragino Kaku Gothic ProN", sans-serif;
+    font-size: .72rem; letter-spacing: .36em;
+    color: var(--vermillion); font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .chapter h2 {
+    font-size: clamp(1.5rem, 4vw, 2.2rem);
+    font-weight: 600; line-height: 1.3;
+    margin-bottom: 14px;
+  }
+  .chapter-lead {
+    font-size: 1rem; color: var(--muted);
+    max-width: 640px; margin-bottom: 32px;
+    font-family: "Hiragino Kaku Gothic ProN", sans-serif;
+  }
+
+  /* ── SCREEN BLOCK ── */
+  .screen-block {
+    margin-bottom: 56px;
+  }
+  .screen-label {
+    font-family: "Hiragino Kaku Gothic ProN", sans-serif;
+    font-size: .76rem; font-weight: 700;
+    letter-spacing: .2em; color: var(--gold);
+    margin-bottom: 10px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .screen-label::before {
+    content: "SCREEN";
+    font-size: .62rem; letter-spacing: .3em;
+    color: var(--vermillion); border: 1px solid var(--vermillion);
+    padding: 1px 6px; border-radius: 2px;
+  }
+  .screen-block h3 {
+    font-size: 1.25rem; font-weight: 600;
+    color: var(--ink); margin-bottom: 16px;
+  }
+  .screen-img {
+    width: 100%;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    display: block;
+    background: var(--screen-bg);
+    margin-bottom: 20px;
+    box-shadow: 0 4px 16px rgba(0,0,0,.12);
+  }
+  /* ── ITEM TABLE ── */
+  .items-table {
+    width: 100%; border-collapse: collapse;
+    font-size: .93rem; margin-bottom: 10px;
+  }
+  .items-table thead th {
+    font-family: "Hiragino Kaku Gothic ProN", sans-serif;
+    font-size: .7rem; letter-spacing: .16em;
+    color: var(--vermillion); text-transform: uppercase;
+    border-bottom: 2px solid var(--ink);
+    padding: 8px 10px; text-align: left; font-weight: 700;
+  }
+  .items-table tbody tr:nth-child(even) {
+    background: var(--paper-deep);
+  }
+  .items-table td {
+    padding: 11px 10px;
+    border-bottom: 1px solid var(--line);
+    vertical-align: top; color: var(--ink);
+    line-height: 1.75;
+  }
+  .items-table td:first-child {
+    font-family: "Hiragino Kaku Gothic ProN", sans-serif;
+    font-weight: 700; font-size: .88rem;
+    white-space: nowrap; color: var(--sumi);
+    min-width: 140px;
+  }
+  @media (prefers-color-scheme: dark) {
+    .items-table td:first-child { color: #e8dfc8; }
+  }
+  .tag {
+    display: inline-block;
+    font-family: "Hiragino Kaku Gothic ProN", sans-serif;
+    font-size: .68rem; font-weight: 700;
+    padding: 1px 7px; border-radius: 3px;
+    margin-right: 4px; vertical-align: middle;
+  }
+  .tag-btn { background: var(--vermillion); color: #fff; }
+  .tag-toggle { background: #4a90d9; color: #fff; }
+  .tag-select { background: var(--gold); color: #fff; }
+  .tag-info { background: var(--muted); color: #fff; }
+  .tag-pro { background: var(--sumi); color: #f0c869; }
+
+  /* ── NOTE BOX ── */
+  .note {
+    background: var(--paper-deep);
+    border-left: 4px solid var(--gold);
+    padding: 14px 18px; margin-top: 14px;
+    font-family: "Hiragino Kaku Gothic ProN", sans-serif;
+    font-size: .87rem; color: var(--ink);
+    line-height: 1.8; border-radius: 0 4px 4px 0;
+  }
+  .note strong { color: var(--vermillion); }
+
+  /* ── DIVIDER ── */
+  .divider {
+    border: none; border-top: 1px dashed var(--line);
+    margin: 36px 0;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 48px 0 64px;
+    text-align: center;
+    border-top: 1px solid var(--line);
+    margin-top: 48px;
+  }
+  footer .stamp {
+    font-family: "Hiragino Mincho ProN", serif;
+    font-size: 1.1rem; color: var(--vermillion);
+    border: 2px solid var(--vermillion);
+    display: inline-block; padding: 8px 18px;
+    border-radius: 5px; transform: rotate(-3deg);
+    margin-bottom: 20px; letter-spacing: .1em;
+  }
+  footer p {
+    font-size: .82rem; color: var(--muted);
+    font-family: "Hiragino Kaku Gothic ProN", sans-serif;
+    line-height: 1.9;
+  }
+
+  /* ── BACK TO TOP ── */
+  .back-top {
+    display: block;
+    font-family: "Hiragino Kaku Gothic ProN", sans-serif;
+    font-size: .8rem; color: var(--muted);
+    text-align: right; margin-top: 8px;
+    text-decoration: none;
+  }
+  .back-top:hover { color: var(--vermillion); }
+
+  @media (max-width: 640px) {
+    .items-table td:first-child { min-width: 100px; font-size: .82rem; }
+    .items-table td { padding: 9px 8px; font-size: .88rem; }
+    .items-table thead th { font-size: .65rem; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-mark">MacWhisper Pro ── 完全操作ガイド</div>
+    <h1>各画面・各項目を<em>ひとつずつ</em>解説</h1>
+    <p class="sub">バージョン 13.21.4 (1427) ・ MacBook Air M5 ・ 2026年6月作成</p>
+  </div>
+</header>
+
+<!-- ── 目次 ── -->
+<nav class="toc-wrap" id="toc">
+  <div class="wrap">
+    <div class="toc-title">目次 TABLE OF CONTENTS</div>
+    <div class="toc-grid">
+      <a href="#ch1"><span class="toc-num">01</span>ホーム画面</a>
+      <a href="#ch2"><span class="toc-num">02</span>アプリ音声録音</a>
+      <a href="#ch3"><span class="toc-num">03</span>ポッドキャスト</a>
+      <a href="#ch4"><span class="toc-num">04</span>モデル選択</a>
+      <a href="#ch5"><span class="toc-num">05</span>言語選択</a>
+      <a href="#ch6"><span class="toc-num">06</span>文字起こし履歴</a>
+      <a href="#ch7"><span class="toc-num">07</span>文字起こし詳細</a>
+      <a href="#ch8"><span class="toc-num">08</span>録音・結果</a>
+      <a href="#ch9"><span class="toc-num">09</span>AIチャット</a>
+      <a href="#ch10"><span class="toc-num">10</span>設定：一般</a>
+      <a href="#ch11"><span class="toc-num">11</span>設定：カスタマイズ</a>
+      <a href="#ch12"><span class="toc-num">12</span>設定：監視フォルダ</a>
+      <a href="#ch13"><span class="toc-num">13</span>設定：会議録音</a>
+      <a href="#ch14"><span class="toc-num">14</span>設定：ショートカット</a>
+      <a href="#ch15"><span class="toc-num">15</span>設定：マイク</a>
+      <a href="#ch16"><span class="toc-num">16</span>設定：ディクテーション</a>
+      <a href="#ch17"><span class="toc-num">17</span>設定：ローカルモデル</a>
+      <a href="#ch18"><span class="toc-num">18</span>設定：クラウドモデル</a>
+      <a href="#ch19"><span class="toc-num">19</span>設定：翻訳</a>
+      <a href="#ch20"><span class="toc-num">20</span>設定：エクスポート</a>
+      <a href="#ch21"><span class="toc-num">21</span>設定：連携・AI</a>
+      <a href="#ch22"><span class="toc-num">22</span>設定：バージョン情報</a>
+    </div>
+  </div>
+</nav>
+
+
+<!-- ══════════════════════════════════════
+     CH 1: ホーム画面
+══════════════════════════════════════ -->
+<div class="wrap">
+
+<section class="chapter" id="ch1">
+  <div class="ch-eyebrow">CHAPTER 01 ── HOME</div>
+  <h2>ホーム画面</h2>
+  <p class="chapter-lead">アプリを起動すると最初に表示される画面です。左側のサイドバーに主要な機能ボタンが並びます。</p>
+
+  <!-- 01 -->
+  <div class="screen-block">
+    <div class="screen-label">01 — ホーム画面（サイドバーあり）</div>
+    <h3>起動直後のメイン画面</h3>
+    <img class="screen-img" src="./screenshots/01_home.jpg" alt="ホーム画面（サイドバーあり）">
+    <table class="items-table">
+      <thead><tr><th>項目名</th><th>種別</th><th>説明</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>MacWhisper Pro（ロゴ/タイトル）</td>
+          <td><span class="tag tag-info">表示</span></td>
+          <td>アプリ名。クリックするとホームに戻ります。</td>
+        </tr>
+        <tr>
+          <td>Voice Memo（ボイスメモ）</td>
+          <td><span class="tag tag-btn">ボタン</span></td>
+          <td>Macのマイクを使ってすぐに録音を開始します。最もよく使う基本機能です。</td>
+        </tr>
+        <tr>
+          <td>Open Files（ファイルを開く）</td>
+          <td><span class="tag tag-btn">ボタン</span></td>
+          <td>すでに録音済みの音声・動画ファイル（mp3, wav, mov, mp4等）を選んで文字起こしします。</td>
+        </tr>
+        <tr>
+          <td>App Audio（アプリ音声）</td>
+          <td><span class="tag tag-btn">ボタン</span></td>
+          <td>特定のアプリ（Zoom, Chrome, Claudeなど）の音声だけをキャプチャして文字起こしします。</td>
+        </tr>
+        <tr>
+          <td>Batch Export（バッチエクスポート）</td>
+          <td><span class="tag tag-btn">ボタン</span></td>
+          <td>複数の音声ファイルをまとめて文字起こし＆一括エクスポートします。大量ファイルを処理するときに便利。</td>
+        </tr>
+        <tr>
+          <td>Podcast（ポッドキャスト）</td>
+          <td><span class="tag tag-btn">ボタン</span></td>
+          <td>ポッドキャストのRSSフィードや音声URLを入力して文字起こしします。</td>
+        </tr>
+        <tr>
+          <td>Live Captions（ライブキャプション）</td>
+          <td><span class="tag tag-btn">ボタン</span></td>
+          <td>リアルタイムで音声を認識しながら字幕をオーバーレイ表示します。会議中の字幕表示に最適。</td>
+        </tr>
+        <tr>
+          <td>Record Teams（Teams録音）</td>
+          <td><span class="tag tag-btn">ボタン</span></td>
+          <td>Microsoft Teamsの会議音声を録音して文字起こしします。</td>
+        </tr>
+        <tr>
+          <td>Record Zoom（Zoom録音）</td>
+          <td><span class="tag tag-btn">ボタン</span></td>
+          <td>Zoomの会議音声を録音して文字起こしします。</td>
+        </tr>
+        <tr>
+          <td>Transcriptions（文字起こし一覧）</td>
+          <td><span class="tag tag-info">ナビ</span></td>
+          <td>過去に行った文字起こしの履歴一覧画面へ移動します。</td>
+        </tr>
+        <tr>
+          <td>Recently Deleted（最近削除したもの）</td>
+          <td><span class="tag tag-info">ナビ</span></td>
+          <td>削除した文字起こしが一時的に保存されます。30日以内なら復元できます。</td>
+        </tr>
+        <tr>
+          <td>サイドバー表示切替（☰）</td>
+          <td><span class="tag tag-btn">ボタン</span></td>
+          <td>左側のサイドバーを開閉します。画面を広く使いたいときに非表示にできます。</td>
+        </tr>
+        <tr>
+          <td>設定（歯車アイコン ⚙）</td>
+          <td><span class="tag tag-btn">ボタン</span></td>
+          <td>各種設定画面を開きます。モデル管理・エクスポート形式・AIサービスなどを設定します。</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <hr class="divider">
+
+  <!-- 02 -->
+  <div class="screen-block">
+    <div class="screen-label">02 — Voice Memoホバー状態</div>
+    <h3>ボイスメモボタンにカーソルを合わせた状態</h3>
+    <img class="screen-img" src="./screenshots/02_voice_memo_hover.jpg" alt="Voice Memoボタンホバー">
+    <table class="items-table">
+      <thead><tr><th>項目名</th><th>種別</th><th>説明</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Voice Memo（ボイスメモ）</td>
+          <td><span class="tag tag-btn">ボタン</span></td>
+          <td>カーソルを乗せると強調表示されます。クリックするとすぐにMacのマイクで録音を開始。停止ボタンを押すまで録音し続けます。</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="note">💡 <strong>使い方：</strong>クリック→話す→停止ボタン押す、の3ステップで文字起こし完了。キーボードショートカットも設定できます（設定→ショートカット）。</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- 03 -->
+  <div class="screen-block">
+    <div class="screen-label">03 — Open Filesホバー状態</div>
+    <h3>ファイルを開くボタンにカーソルを合わせた状態</h3>
+    <img class="screen-img" src="./screenshots/03_open_files_hover.jpg" alt="Open Filesボタンホバー">
+    <table class="items-table">
+      <thead><tr><th>項目名</th><th>種別</th><th>説明</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Open Files（ファイルを開く）</td>
+          <td><span class="tag tag-btn">ボタン</span></td>
+          <td>クリックするとファイル選択ダイアログが開きます。対応形式：mp3 / wav / m4a / ogg / opus / mov / mp4など。複数ファイルを同時選択することも可能です。</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="note">💡 <strong>ドラッグ＆ドロップも対応：</strong>FinderからファイルをMacWhisperの画面にドロップするだけでも文字起こしを開始できます。</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- 04 -->
+  <div class="screen-block">
+    <div class="screen-label">04 — App Audioホバー状態</div>
+    <h3>アプリ音声ボタンにカーソルを合わせた状態</h3>
+    <img class="screen-img" src="./screenshots/04_app_audio_hover.jpg" alt="App Audioボタンホバー">
+    <table class="items-table">
+      <thead><tr><th>項目名</th><th>種別</th><th>説明</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>App Audio（アプリ音声）</td>
+          <td><span class="tag tag-btn">ボタン</span></td>
+          <td>特定のアプリが出力する音声だけをキャプチャします。例：Zoomの相手の声だけを録音するなど。クリックするとアプリ選択画面が表示されます。</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <hr class="divider">
+
+  <!-- 06, 07, 09, 10, 11 -->
+  <div class="screen-block">
+    <div class="screen-label">06 — Batch Exportホバー</div>
+    <h3>バッチエクスポートボタン</h3>
+    <img class="screen-img" src="./screenshots/06_batch_export_hover.jpg" alt="Batch Exportホバー">
+    <table class="items-table">
+      <thead><tr><th>項目名</th><th>種別</th><th>説明</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Batch Export（バッチエクスポート）</td>
+          <td><span class="tag tag-btn">ボタン</span></td>
+          <td>複数の音声ファイルをフォルダごと選択し、まとめて文字起こしして一括保存します。大量のインタビュー音源や講義録音を処理するときに使います。</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <hr class="divider">
+
+  <div class="screen-block">
+    <div class="screen-label">07 — Podcastホバー</div>
+    <h3>ポッドキャストボタン</h3>
+    <img class="screen-img" src="./screenshots/07_podcast_hover.jpg" alt="Podcastホバー">
+    <table class="items-table">
+      <thead><tr><th>項目名</th><th>種別</th><th>説明</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Podcast（ポッドキャスト）</td>
+          <td><span class="tag tag-btn">ボタン</span></td>
+          <td>RSSフィードURLやポッドキャストエピソードの音声URLを入力すると、自動でダウンロード＆文字起こしします。</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <hr class="divider">
+
+  <div class="screen-block">
+    <div class="screen-label">09 — Live Captionsホバー</div>
+    <h3>ライブキャプションボタン</h3>
+    <img class="screen-img" src="./screenshots/09_live_captions_hover.jpg" alt="Live Captionsホバー">
+    <table class="items-table">
+      <thead><tr><th>項目名</th><th>種別</th><th>説明</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Live Captions（ライブキャプション）</td>
+          <td><span class="tag tag-btn">ボタン</span></td>
+          <td>話した言葉をリアルタイムで認識し、画面上に字幕として表示します。聴覚に障害がある方や、外国語会議での字幕表示にも便利です。</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <hr class="divider">
+
+  <div class="screen-block">
+    <div class="screen-label">10 — Record Teamsホバー</div>
+    <h3>Teams録音ボタン</h3>
+    <img class="screen-img" src="./screenshots/10_record_teams_hover.jpg" alt="Record Teamsホバー">
+    <table class="items-table">
+      <thead><tr><th>項目名</th><th>種別</th><th>説明</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Record Teams（Teams録音）</td>
+          <td><span class="tag tag-btn">ボタン</span></td>
+          <td>Microsoft Teamsを起動した状態でこのボタンを押すと、会議音声を自動で録音・文字起こしします。相手の声とマイクの両方を収録します。</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <hr class="divider">
+
+  <div class="screen-block">
+    <div class="screen-label">11 — Record Zoomホバー</div>
+    <h3>Zoom録音ボタン</h3>
+    <img class="screen-img" src="./screenshots/11_record_zoom_hover.jpg" alt="Record Zoomホバー">
+    <table class="items-table">
+      <thead><tr><th>項目名</th><th>種別</th><th>説明</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Record Zoom（Zoom録音）</td>
+          <td><span class="tag tag-btn">ボタン</span></td>
+          <td>Zoomを起動した状態でこのボタンを押すと、会議音声を自動で録音・文字起こしします。</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <hr class="divider">
+
+  <!-- 12 -->
+  <div class="screen-block">
+    <div class="screen-label">12 — ホーム画面（サイドバーなし）</div>
+    <h3>サイドバーを非表示にした状態</h3>
+    <img class="screen-img" src="./screenshots/12_home_no_sidebar.jpg" alt="ホーム画面（サイドバーなし）">
+    <table class="items-table">
+      <thead><tr><th>項目名</th><th>種別</th><th>説明</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>サイドバー非表示状態</td>
+          <td><span class="tag tag-info">レイアウト</span></td>
+          <td>☰ボタンでサイドバーを隠すと、中央のコンテンツエリアが広くなります。文字起こし結果を読むときに便利です。</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <a href="#top" class="back-top">▲ 目次へ戻る</a>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     CH 2: アプリ音声録音
+══════════════════════════════════════ -->
+<section class="chapter" id="ch2">
+  <div class="ch-eyebrow">CHAPTER 02 ── APP AUDIO</div>
+  <h2>アプリ音声録音画面</h2>
+  <p class="chapter-lead">特定のアプリが出力する音声のみをキャプチャして文字起こしする機能です。</p>
+
+  <div class="screen-block">
+    <div class="screen-label">05 — アプリ音声録音（アプリ選択）</div>
+    <h3>録音するアプリを選択する画面</h3>
+    <img class="screen-img" src="./screenshots/05_app_audio_recording.jpg" alt="App Audio Recording">
+    <table class="items-table">
+      <thead><tr><th>項目名</th><th>種別</th><th>説明</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>All System Audio（全システム音声）</td>
+          <td><span class="tag tag-select">選択肢</span></td>
+          <td>Mac全体の音声出力をすべてキャプチャします。どのアプリの音声かを絞り込まないときに使います。</td>
+        </tr>
+        <tr>
+          <td>ChatGPT</td>
+          <td><span class="tag tag-select">選択肢</span></td>
+          <td>ChatGPTアプリの音声のみをキャプチャします。</td>
+        </tr>
+        <tr>
+          <td>Claude</td>
+          <td><span class="tag tag-select">選択肢</span></td>
+          <td>Claudeアプリの音声のみをキャプチャします。</td>
+        </tr>
+        <tr>
+          <td>Codex</td>
+          <td><span class="tag tag-select">選択肢</span></td>
+          <td>Codex（OpenAI）アプリの音声をキャプチャします。</td>
+        </tr>
+        <tr>
+          <td>Chrome</td>
+          <td><span class="tag tag-select">選択肢</span></td>
+          <td>Google Chromeブラウザから出力される音声（YouTube動画、Web会議など）をキャプチャします。</td>
+        </tr>
+        <tr>
+          <td>Safari</td>
+          <td><span class="tag tag-select">選択肢</span></td>
+          <td>Safariブラウザの音声をキャプチャします。</td>
+        </tr>
+        <tr>
+          <td>Spark</td>
+          <td><span class="tag tag-select">選択肢</span></td>
+          <td>メールアプリ「Spark」の音声をキャプチャします。</td>
+        </tr>
+        <tr>
+          <td>Zoom</td>
+          <td><span class="tag tag-select">選択肢</span></td>
+          <td>Zoomのみのオーディオをキャプチャします（Record Zoomボタンと同様）。</td>
+        </tr>
+        <tr>
+          <td>Terminal（ターミナル）</td>
+          <td><span class="tag tag-select">選択肢</span></td>
+          <td>ターミナルアプリの音声出力をキャプチャします。</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="note">💡 <strong>ポイント：</strong>リストに表示されるのは現在起動中のアプリだけです。対象アプリを起動してからApp Audioを選んでください。</div>
+  </div>
+
+  <a href="#top" class="back-top">▲ 目次へ戻る</a>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     CH 3: ポッドキャスト
+══════════════════════════════════════ -->
+<section class="chapter" id="ch3">
+  <div class="ch-eyebrow">CHAPTER 03 ── PODCAST</div>
+  <h2>ポッドキャスト文字起こし</h2>
+  <p class="chapter-lead">ポッドキャストのエピソードURLやRSSフィードから直接文字起こしできます。</p>
+
+  <div class="screen-block">
+    <div class="screen-label">08 — ポッドキャスト画面</div>
+    <h3>ポッドキャストエピソードのURL入力画面</h3>
+    <img class="screen-img" src="./screenshots/08_podcast_screen.jpg" alt="ポッドキャスト画面">
+    <table class="items-table">
+      <thead><tr><th>項目名</th><th>種別</th><th>説明</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Easily transcribe your podcast episodes（説明文）</td>
+          <td><span class="tag tag-info">表示</span></td>
+          <td>「ポッドキャストエピソードを簡単に文字起こしできます」という機能説明。</td>
+        </tr>
+        <tr>
+          <td>URL入力フィールド</td>
+          <td><span class="tag tag-info">テキスト入力</span></td>
+          <td>ポッドキャストエピソードの音声ファイルURL、またはRSSフィードのURLを貼り付けます。</td>
+        </tr>
+        <tr>
+          <td>Transcribeボタン</td>
+          <td><span class="tag tag-btn">ボタン</span></td>
+          <td>URLを入力後にこのボタンを押すと、音声をダウンロードして文字起こしを開始します。</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="note">💡 <strong>使い方：</strong>英語ポッドキャストのURLを入力→Transcribe→翻訳機能で日本語に変換、という流れで英語コンテンツを素早く理解できます。</div>
+  </div>
+
+  <a href="#top" class="back-top">▲ 目次へ戻る</a>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     CH 4: モデル選択
+══════════════════════════════════════ -->
+<section class="chapter" id="ch4">
+  <div class="ch-eyebrow">CHAPTER 04 ── MODELS</div>
+  <h2>AIモデル選択</h2>
+  <p class="chapter-lead">文字起こしに使うAIエンジン（モデル）を選択します。用途に合わせて使い分けることで精度が上がります。</p>
+
+  <div class="screen-block">
+    <div class="screen-label">13 — 言語特化モデル選択</div>
+    <h3>Language-Specific（言語特化）モデル一覧</h3>
+    <img class="screen-img" src="./screenshots/13_model_language_specific.jpg" alt="言語特化モデル">
+    <table class="items-table">
+      <thead><tr><th>項目名</th><th>種別</th><th>説明</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Language-Specific（言語特化）カテゴリ</td>
+          <td><span class="tag tag-info">カテゴリ</span></td>
+          <td>特定の言語に最適化されたモデルのグループ。日本語専用モデルなどが含まれます。</td>
+        </tr>
+        <tr>
+          <td>Whisper C++ Japanese（日本語専用モデル）</td>
+          <td><span class="tag tag-select">モデル</span></td>
+          <td>日本語に特化したWhisperモデル。日本語のみを話す場面（税理士講義、日本語会議など）では最も精度が高いです。サイズ：1.52GB。</td>
+        </tr>
+        <tr>
+          <td>日本語（Apple Speech）</td>
+          <td><span class="tag tag-select">モデル</span></td>
+          <td>AppleのオンデバイスSpeech認識を使う日本語モデル。ダウンロード不要で使えますが、Whisperより精度は低め。</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="note">🎯 <strong>日本語の会議・講義録音には：</strong>「Whisper C++ Japanese」または「Large v3 Turbo」がおすすめです。税理士試験の講義音声の文字起こしには日本語専用モデルが有効です。</div>
+  </div>
+
+  <hr class="divider">
+
+  <div class="screen-block">
+    <div class="screen-label">14 — 多言語モデル選択</div>
+    <h3>Multi-Language（多言語）モデル一覧</h3>
+    <img class="screen-img" src="./screenshots/14_model_multilanguage.jpg" alt="多言語モデル">
+    <table class="items-table">
+      <thead><tr><th>項目名</th><th>種別</th><th>説明</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Large v3 Turbo ✓（現在選択中）</td>
+          <td><span class="tag tag-select">モデル</span></td>
+          <td>WhisperKitエンジンの最高精度モデル。日本語を含む多言語対応。現在このMacに設定されているデフォルトモデルです（チェックマーク表示）。速度と精度のバランスが良い。</td>
+        </tr>
+        <tr>
+          <td>Parakeet v3（494MB）</td>
+          <td><span class="tag tag-select">モデル</span></td>
+          <td>NVIDIAが開発した英語特化モデル。英語のみを扱う場合は高速・高精度。容量494MBとコンパクト。</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="note">📌 <strong>モデル選択の目安：</strong><br>日本語のみ → Japanese（言語特化）<br>日英混在 → Large v3 Turbo<br>英語のみ → Parakeet v3（最速）</div>
+  </div>
+
+  <a href="#top" class="back-top">▲ 目次へ戻る</a>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     CH 5: 言語選択
+══════════════════════════════════════ -->
+<section class="chapter" id="ch5">
+  <div class="ch-eyebrow">CHAPTER 05 ── LANGUAGE</div>
+  <h2>言語選択</h2>
+  <p class="chapter-lead">文字起こしを行う言語を指定します。自動検出にすると話している言語をAIが判断します。</p>
+
+  <div class="screen-block">
+    <div class="screen-label">15 — 言語セレクター</div>
+    <h3>言語選択ドロップダウン</h3>
+    <img class="screen-img" src="./screenshots/15_language_selector.jpg" alt="言語セレクター">
+    <table class="items-table">
+      <thead><tr><th>項目名</th><th>種別</th><th>説明</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Auto Detect Language（言語自動検出）</td>
+          <td><span class="tag tag-select">選択肢</span></td>
+          <td>AIが話している言語を自動的に判断します。日英混在の会話など、言語が不明なときに使います。ただし精度は言語指定より若干低くなります。</td>
+        </tr>
+        <tr>
+          <td>All Languages（すべての言語）</td>
+          <td><span class="tag tag-select">選択肢</span></td>
+          <td>対応しているすべての言語リストを表示します。</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="note">💡 <strong>日本語の場合：</strong>「Japanese（日本語）」を明示的に選ぶと、自動検出より高精度になります。</div>
+  </div>
+
+  <hr class="divider">
+
+  <div class="screen-block">
+    <div class="screen-label">16 — 全言語リスト</div>
+    <h3>対応言語一覧（スクロールリスト）</h3>
+    <img class="screen-img" src="./screenshots/16_language_all_list.jpg" alt="全言語リスト">
+    <table class="items-table">
+      <thead><tr><th>項目名</th><th>説明</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Afrikaans〜Hungarian＋</td>
+          <td>Whisperが対応する約100言語がアルファベット順に表示されます。日本語（Japanese）もリストにあります。スクロールして選択してください。</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <a href="#top" class="back-top">▲ 目次へ戻る</a>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     CH 6: 文字起こし履歴
+══════════════════════════════════════ -->
+<section class="chapter" id="ch6">
+  <div class="ch-eyebrow">CHAPTER 06 ── HISTORY</div>
+  <h2>文字起こし履歴・削除済み</h2>
+  <p class="chapter-lead">過去に行った文字起こしの一覧と、削除したアイテムを管理します。</p>
+
+  <div class="screen-block">
+    <div class="screen-label">17 — 最近削除したもの</div>
+    <h3>Recently Deleted（削除済みトレイ）</h3>
+    <img class="screen-img" src="./screenshots/17_recently_deleted.jpg" alt="最近削除したもの">
+    <table class="items-table">
+      <thead><tr><th>項目名</th><th>種別</th><th>説明</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Recently Deleted（最近削除したもの）</td>
+          <td><span class="tag tag-info">画面タイトル</span></td>
+          <td>削除した文字起こしがここに一時保存されます。MacのゴミBinと似た仕組みです。</td>
+        </tr>
+        <tr>
+          <td>削除済みアイテム（例：Star Warsコンテンツ）</td>
+          <td><span class="tag tag-info">リスト項目</span></td>
+          <td>削除した文字起こしの一覧。タイトル・日時・内容プレビューが表示されます。クリックで内容確認、右クリックで「復元」できます。</td>
+        </tr>
+        <tr>
+          <td>削除済みアイテム（例：連結会計応用論点…）</td>
+          <td><span class="tag tag-info">リスト項目</span></td>
+          <td>「第15期　連結会計応用論点特訓講義・第6回1」などの文字起こしが表示されています。誤って削除した講義録音もここから復元できます。</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="note">⚠️ <strong>注意：</strong>削除済みアイテムは30日後に自動的に完全削除されます。重要なデータは早めに復元してください。</div>
+  </div>
+
+  <hr class="divider">
+
+  <div class="screen-block">
+    <div class="screen-label">18 — 文字起こし一覧（空の状態）</div>
+    <h3>Transcriptions画面（まだ何もない状態）</h3>
+    <img class="screen-img" src="./screenshots/18_transcriptions_empty.jpg" alt="Transcriptions空の状態">
+    <table class="items-table">
+      <thead><tr><th>項目名</th><th>種別</th><th>説明</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>No Transcriptions Yet（まだ文字起こしがありません）</td>
+          <td><span class="tag tag-info">表示</span></td>
+          <td>文字起こし履歴がゼロの状態。初回使用時や履歴を全削除した後に表示されます。最初に一度文字起こしすると、この画面に結果が蓄積されていきます。</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <hr class="divider">
+
+  <div class="screen-block">
+    <div class="screen-label">21 — 履歴ありホーム画面</div>
+    <h3>文字起こし実績ができたホーム画面</h3>
+    <img class="screen-img" src="./screenshots/21_home_with_history.jpg" alt="履歴ありホーム画面">
+    <table class="items-table">
+      <thead><tr><th>項目名</th><th>種別</th><th>説明</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Recent Transcriptions（最近の文字起こし）</td>
+          <td><span class="tag tag-info">表示</span></td>
+          <td>過去の文字起こし結果がホーム画面にも表示されるようになります。クリックですぐに詳細を開けます。</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <a href="#top" class="back-top">▲ 目次へ戻る</a>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     CH 7: 文字起こし詳細
+══════════════════════════════════════ -->
+<section class="chapter" id="ch7">
+  <div class="ch-eyebrow">CHAPTER 07 ── TRANSCRIPT DETAIL</div>
+  <h2>文字起こし詳細表示</h2>
+  <p class="chapter-lead">文字起こし結果の詳細ビューです。タイムスタンプ付きセグメント表示と段落表示を切り替えられます。</p>
+
+  <div class="screen-block">
+    <div class="screen-label">19 — セグメント表示</div>
+    <h3>タイムスタンプ付きセグメント一覧</h3>
+    <img class="screen-img" src="./screenshots/19_transcript_segments.jpg" alt="タイムスタンプ付きセグメント">
+    <table class="items-table">
+      <thead><tr><th>項目名</th><th>種別</th><th>説明</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>タイムスタンプ（00:00〜）</td>
+          <td><span class="tag tag-info">表示</span></td>
+          <td>各セグメントが音声の何秒目から始まるかを表示します。クリックするとその時刻の音声にジャンプして再生できます。</td>
+        </tr>
+        <tr>
+          <td>セグメントテキスト</td>
+          <td><span class="tag tag-info">表示</span></td>
+          <td>数秒ごとに区切られた発話のかたまり。Whisperが認識した文字起こしが表示されます。</td>
+        </tr>
+        <tr>
+          <td>Segments（セグメント）タブ</td>
+          <td><span class="tag tag-btn">タブ</span></td>
+          <td>タイムスタンプ付きのセグメント表示に切り替えます。正確な発言時刻を確認したいときに使います。</td>
+        </tr>
+        <tr>
+          <td>Paragraph（段落）タブ</td>
+          <td><span class="tag tag-btn">タブ</span></td>
+          <td>段落形式（読みやすい文章）に切り替えます。コピーして使うときはこちらが便利。</td>
+        </tr>
+        <tr>
+          <td>コピーボタン</td>
+          <td><span class="tag tag-btn">ボタン</span></td>
+          <td>表示中の文字起こし全文をクリップボードにコピーします。</td>
+        </tr>
+        <tr>
+          <td>エクスポートボタン</td>
+          <td><span class="tag tag-btn">ボタン</span></td>
+          <td>TXT / DOCX / PDF / SRT / VTT など各種形式でファイルに保存します。</td>
+        </tr>
+        <tr>
+          <td>AIサマリーボタン</td>
+          <td><span class="tag tag-pro">Pro</span></td>
+          <td>AIが文字起こし内容を要約します。AIサービス（Claude等）の設定が必要です。</td>
+        </tr>
+        <tr>
+          <td>翻訳ボタン</td>
+          <td><span class="tag tag-btn">ボタン</span></td>
+          <td>文字起こし内容を別の言語（日本語→英語など）に翻訳します。設定→翻訳で言語を指定します。</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <hr class="divider">
+
+  <div class="screen-block">
+    <div class="screen-label">20 — 段落表示（翻訳進行中）</div>
+    <h3>段落ビュー＋翻訳処理中の状態</h3>
+    <img class="screen-img" src="./screenshots/20_transcript_paragraph.jpg" alt="段落表示と翻訳">
+    <table class="items-table">
+      <thead><tr><th>項目名</th><th>種別</th><th>説明</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Paragraph（段落）表示</td>
+          <td><span class="tag tag-info">表示</span></td>
+          <td>タイムスタンプなしの読みやすい段落形式でテキストを表示します。文章として読む・コピーするときに適しています。</td>
+        </tr>
+        <tr>
+          <td>翻訳進行中インジケーター</td>
+          <td><span class="tag tag-info">表示</span></td>
+          <td>翻訳処理中はスピナーや進捗バーが表示されます。AIによる翻訳は音声の長さによって数秒〜数分かかります。</td>
+        </tr>
+        <tr>
+          <td>翻訳結果（Translation）</td>
+          <td><span class="tag tag-info">表示</span></td>
+          <td>翻訳が完了すると、元のテキストの下または横に翻訳テキストが表示されます。設定→翻訳で「並べて表示」か「翻訳のみ表示」を選べます。</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <a href="#top" class="back-top">▲ 目次へ戻る</a>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     CH 8: 録音・結果
+══════════════════════════════════════ -->
+<section class="chapter" id="ch8">
+  <div class="ch-eyebrow">CHAPTER 08 ── RECORDING</div>
+  <h2>録音中・文字起こし結果</h2>
+
+  <div class="screen-block">
+    <div class="screen-label">22 — 新規録音・モデル読み込み中</div>
+    <h3>New Recording / Loading Model（録音開始直後）</h3>
+    <img class="screen-img" src="./screenshots/22_new_recording_loading.jpg" alt="新規録音・モデル読み込み中">
+    <table class="items-table">
+      <thead><tr><th>項目名</th><th>種別</th><th>説明</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>New Recording（新規録音）</td>
+          <td><span class="tag tag-info">画面タイトル</span></td>
+          <td>録音を開始した直後の画面です。</td>
+        </tr>
+        <tr>
+          <td>Loading Model（モデル読み込み中）</td>
+          <td><span class="tag tag-info">ステータス</span></td>
+          <td>AIモデル（Large v3 Turboなど）をメモリに展開中です。初回は数秒かかりますが、2回目以降はキャッシュされて速くなります。</td>
+        </tr>
+        <tr>
+          <td>録音波形・マイクレベル</td>
+          <td><span class="tag tag-info">表示</span></td>
+          <td>マイクが音声を拾っているかどうかを波形で確認できます。波形が動いていれば正常に録音されています。</td>
+        </tr>
+        <tr>
+          <td>停止ボタン（■）</td>
+          <td><span class="tag tag-btn">ボタン</span></td>
+          <td>押すと録音を終了し、文字起こし処理を開始します。</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <hr class="divider">
+
+  <div class="screen-block">
+    <div class="screen-label">23 — ボイスメモ文字起こし結果</div>
+    <h3>Voice Memo文字起こし完了画面</h3>
+    <img class="screen-img" src="./screenshots/23_voice_memo_result.jpg" alt="ボイスメモ文字起こし結果">
+    <table class="items-table">
+      <thead><tr><th>項目名</th><th>種別</th><th>説明</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>文字起こしテキスト</td>
+          <td><span class="tag tag-info">表示</span></td>
+          <td>録音した音声の文字起こし結果が表示されます。例：「テストテストこれはテストです シー君が何て言ったんだっけ…」のように認識されています。</td>
+        </tr>
+        <tr>
+          <td>再生ボタン（▶）</td>
+          <td><span class="tag tag-btn">ボタン</span></td>
+          <td>録音した音声を再生します。テキストと照合して確認できます。</td>
+        </tr>
+        <tr>
+          <td>エクスポートボタン</td>
+          <td><span class="tag tag-btn">ボタン</span></td>
+          <td>結果をTXT・DOCX・PDF・SRT等のファイルに書き出します。</td>
+        </tr>
+        <tr>
+          <td>コピーボタン</td>
+          <td><span class="tag tag-btn">ボタン</span></td>
+          <td>テキスト全文をクリップボードにコピーします。</td>
+        </tr>
+        <tr>
+          <td>AI Summary（AIサマリー）</td>
+          <td><span class="tag tag-pro">Pro</span></td>
+          <td>AIが内容を要約します。ClaudeやOpenAI等のAPIキー設定が必要です。</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <a href="#top" class="back-top">▲ 目次へ戻る</a>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     CH 9: AIチャット
+══════════════════════════════════════ -->
+<section class="chapter" id="ch9">
+  <div class="ch-eyebrow">CHAPTER 09 ── AI CHAT</div>
+  <h2>AIチャットパネル</h2>
+  <p class="chapter-lead">文字起こし結果をAIと対話しながら加工・分析できます。</p>
+
+  <div class="screen-block">
+    <div class="screen-label">24 — AIチャットパネル</div>
+    <h3>AI Chat（プロンプト一覧）</h3>
+    <img class="screen-img" src="./screenshots/24_ai_chat_panel.jpg" alt="AIチャットパネル">
+    <table class="items-table">
+      <thead><tr><th>項目名</th><th>種別</th><th>説明</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Bullet Points（箇条書き）</td>
+          <td><span class="tag tag-btn">プロンプト</span></td>
+          <td>文字起こし内容を箇条書き形式に整理します。議事録やメモ作成に便利。</td>
+        </tr>
+        <tr>
+          <td>Improve Grammar &amp; Punctuation（文法・句読点を改善）</td>
+          <td><span class="tag tag-btn">プロンプト</span></td>
+          <td>AIが文法の誤りや句読点を自動修正します。音声認識の誤りも一部修正されます。</td>
+        </tr>
+        <tr>
+          <td>Split into paragraphs（段落に分割）</td>
+          <td><span class="tag tag-btn">プロンプト</span></td>
+          <td>長い文字起こしテキストをトピックごとに段落分けします。</td>
+        </tr>
+        <tr>
+          <td>Highlight Key Points（重要ポイントをハイライト）</td>
+          <td><span class="tag tag-btn">プロンプト</span></td>
+          <td>重要な情報や結論をAIが抽出して強調表示します。</td>
+        </tr>
+        <tr>
+          <td>Extract Questions（質問を抽出）</td>
+          <td><span class="tag tag-btn">プロンプト</span></td>
+          <td>会話や講義中の「質問」だけをリストアップします。FAQ作成の下書きに使えます。</td>
+        </tr>
+        <tr>
+          <td>Identify Emotions（感情を分析）</td>
+          <td><span class="tag tag-btn">プロンプト</span></td>
+          <td>テキストから話者の感情（喜び・怒り・悲しみなど）を分析します。</td>
+        </tr>
+        <tr>
+          <td>Generate FAQ（FAQ生成）</td>
+          <td><span class="tag tag-btn">プロンプト</span></td>
+          <td>内容から「よくある質問と回答」形式のFAQを自動生成します。</td>
+        </tr>
+        <tr>
+          <td>Extract Statistics（統計を抽出）</td>
+          <td><span class="tag tag-btn">プロンプト</span></td>
+          <td>テキスト中に含まれる数値・統計データを一覧で抽出します。</td>
+        </tr>
+        <tr>
+          <td>Paraphrase Content（言い換え）</td>
+          <td><span class="tag tag-btn">プロンプト</span></td>
+          <td>同じ意味を別の表現に書き換えます。</td>
+        </tr>
+        <tr>
+          <td>Create a mindmap（マインドマップ作成）</td>
+          <td><span class="tag tag-btn">プロンプト</span></td>
+          <td>内容をマインドマップ形式（Markdownまたはテキスト形式）で整理します。</td>
+        </tr>
+        <tr>
+          <td>Foundation Model（基盤AIモデル選択）</td>
+          <td><span class="tag tag-select">セレクター</span></td>
+          <td>AIチャットで使うAIエンジンを選択します。Apple（オンデバイス）/ Claude / ChatGPT / Ollamaなどを設定→AIサービスで追加できます。</td>
+        </tr>
+        <tr>
+          <td>カスタムプロンプト入力</td>
+          <td><span class="tag tag-info">テキスト入力</span></td>
+          <td>上のプロンプト以外に、自由に質問や指示を入力できます。例：「この内容を日本語で要約して」など。</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="note">💡 <strong>テレビ販売20年の活用例：</strong>商品説明動画を文字起こし→「Bullet Points」で箇条書き→特徴リストを即座に作成、という使い方ができます。</div>
+  </div>
+
+  <a href="#top" class="back-top">▲ 目次へ戻る</a>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     CH 10: 設定：一般
+══════════════════════════════════════ -->
+<section class="chapter" id="ch10">
+  <div class="ch-eyebrow">CHAPTER 10 ── SETTINGS: GENERAL</div>
+  <h2>設定 — General（一般）</h2>
+  <p class="chapter-lead">アプリの基本動作を設定します。</p>
+
+  <div class="screen-block">
+    <div class="screen-label">S01 — 設定：General（一般）</div>
+    <h3>一般設定画面</h3>
+    <img class="screen-img" src="./screenshots/s01_settings_general.jpg" alt="設定 General">
+    <table class="items-table">
+      <thead><tr><th>項目名</th><th>種別</th><th>説明</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Play sound when finished（完了時に音を鳴らす）</td>
+          <td><span class="tag tag-toggle">トグル</span></td>
+          <td>文字起こしが完了したときに効果音を鳴らします。ONにしておくと他の作業をしながら完了を気づけます。</td>
+        </tr>
+        <tr>
+          <td>App visibility mode（アプリ表示モード）</td>
+          <td><span class="tag tag-select">セレクター</span></td>
+          <td>「Dock &amp; Menubar（DockとメニューBARの両方）」に設定されています。「Menubar Only」にするとDockから消えて常駐型になります。</td>
+        </tr>
+        <tr>
+          <td>File Import Behavior（ファイルインポート動作）</td>
+          <td><span class="tag tag-select">セレクター</span></td>
+          <td>ファイルをドロップしたときの動作を選択します（即時処理 / 確認ダイアログ表示など）。</td>
+        </tr>
+        <tr>
+          <td>Previously Transcribed Files（過去に処理したファイル）</td>
+          <td><span class="tag tag-select">セレクター</span></td>
+          <td>同じファイルを再度ドロップした場合の動作を選択します（スキップ / 再処理など）。</td>
+        </tr>
+        <tr>
+          <td>Always open in new window（常に新しいウィンドウで開く）</td>
+          <td><span class="tag tag-toggle">トグル</span></td>
+          <td>ONにすると文字起こし結果がそのつど別ウィンドウで開きます。複数の結果を同時に確認したいときに便利。</td>
+        </tr>
+        <tr>
+          <td>Videos セクション</td>
+          <td><span class="tag tag-info">セクション</span></td>
+          <td>動画ファイルを処理するときの詳細設定（フレームレート・解像度など）。</td>
+        </tr>
+        <tr>
+          <td>YouTube セクション</td>
+          <td><span class="tag tag-info">セクション</span></td>
+          <td>YouTubeのURLから文字起こしするときの設定（字幕優先 / 音声認識など）。</td>
+        </tr>
+        <tr>
+          <td>Launch at Login（ログイン時に起動）</td>
+          <td><span class="tag tag-toggle">トグル</span></td>
+          <td>ONにするとMac起動時にMacWhisperが自動的に起動します。常時使う場合はONが便利。</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <a href="#top" class="back-top">▲ 目次へ戻る</a>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     CH 11: 設定：カスタマイズ
+══════════════════════════════════════ -->
+<section class="chapter" id="ch11">
+  <div class="ch-eyebrow">CHAPTER 11 ── SETTINGS: CUSTOMISATION</div>
+  <h2>設定 — Customisation（カスタマイズ）</h2>
+
+  <div class="screen-block">
+    <div class="screen-label">S02 — 設定：Customisation</div>
+    <h3>カスタマイズ設定画面</h3>
+    <img class="screen-img" src="./screenshots/s02_settings_customisation.jpg" alt="設定 Customisation">
+    <table class="items-table">
+      <thead><tr><th>項目名</th><th>種別</th><th>説明</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>AI-generated title（AIタイトル自動生成）</td>
+          <td><span class="tag tag-toggle">トグル</span></td>
+          <td>ONにするとAIが文字起こし内容から自動でタイトルを付けます。履歴管理が楽になります。</td>
+        </tr>
+        <tr>
+          <td>History settings（履歴設定）</td>
+          <td><span class="tag tag-info">セクション</span></td>
+          <td>履歴の保存件数や保存期間を設定します。</td>
+        </tr>
+        <tr>
+          <td>AI Service for Summarizations（AI要約サービス）</td>
+          <td><span class="tag tag-select">セレクター</span></td>
+          <td>要約に使うAIを選択します。「Foundation Model（Apple）」がデフォルト。ClaudeやOpenAI APIを設定すれば高精度な要約が得られます。</td>
+        </tr>
+        <tr>
+          <td>AI Title and Summary options（AIタイトル・要約オプション）</td>
+          <td><span class="tag tag-info">セクション</span></td>
+          <td>タイトルの言語（日本語で生成するかどうか）、要約の長さ、プロンプトのカスタマイズなどを設定します。</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <a href="#top" class="back-top">▲ 目次へ戻る</a>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     CH 12: 設定：監視フォルダ
+══════════════════════════════════════ -->
+<section class="chapter" id="ch12">
+  <div class="ch-eyebrow">CHAPTER 12 ── SETTINGS: WATCHED FOLDERS</div>
+  <h2>設定 — Watched Folders（監視フォルダ）</h2>
+  <p class="chapter-lead">指定したフォルダに音声ファイルを入れると自動で文字起こしする機能です。</p>
+
+  <div class="screen-block">
+    <div class="screen-label">S03 — 設定：Watched Folders</div>
+    <h3>監視フォルダ設定画面</h3>
+    <img class="screen-img" src="./screenshots/s03_settings_watched_folders.jpg" alt="設定 Watched Folders">
+    <table class="items-table">
+      <thead><tr><th>項目名</th><th>種別</th><th>説明</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Folders to Observe（監視するフォルダ）</td>
+          <td><span class="tag tag-info">セクション</span></td>
+          <td>自動文字起こしを監視するフォルダを指定します。複数フォルダを追加できます。</td>
+        </tr>
+        <tr>
+          <td>Add Folder（フォルダを追加）</td>
+          <td><span class="tag tag-btn">ボタン</span></td>
+          <td>Finderダイアログが開き、監視するフォルダを選択します。例：「~/Desktop/録音」フォルダを指定しておくと便利。</td>
+        </tr>
+        <tr>
+          <td>Auto-Transcribe Watch Folder（監視フォルダを自動文字起こし）</td>
+          <td><span class="tag tag-toggle">トグル ON</span></td>
+          <td>ONになっています。指定フォルダに音声ファイルが追加されると、MacWhisperが自動的に文字起こしを開始します。</td>
+        </tr>
+        <tr>
+          <td>Folder Depth（フォルダの深さ）</td>
+          <td><span class="tag tag-select">セレクター</span></td>
+          <td>サブフォルダの何階層まで監視するかを指定します。「1」なら直下のファイルのみ。</td>
+        </tr>
+        <tr>
+          <td>Save to History（履歴に保存）</td>
+          <td><span class="tag tag-toggle">トグル ON</span></td>
+          <td>ONになっています。自動文字起こしした結果を履歴に保存します。</td>
+        </tr>
+        <tr>
+          <td>Export Formats（エクスポート形式）</td>
+          <td><span class="tag tag-select">セレクター</span></td>
+          <td>自動文字起こし後に自動保存するファイル形式を選択します（TXT, DOCX, SRTなど）。</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="note">💡 <strong>活用例：</strong>ScanSnap（スキャナー）や音声レコーダーのデータを自動で特定フォルダに保存するよう設定しておけば、MacWhisperが自動で文字起こしします。</div>
+  </div>
+
+  <a href="#top" class="back-top">▲ 目次へ戻る</a>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     CH 13: 設定：会議録音
+══════════════════════════════════════ -->
+<section class="chapter" id="ch13">
+  <div class="ch-eyebrow">CHAPTER 13 ── SETTINGS: RECORD MEETINGS</div>
+  <h2>設定 — Record Meetings（会議録音）</h2>
+
+  <div class="screen-block">
+    <div class="screen-label">S04 — 設定：Record Meetings</div>
+    <h3>会議録音設定画面</h3>
+    <img class="screen-img" src="./screenshots/s04_settings_record_meetings.jpg" alt="設定 Record Meetings">
+    <table class="items-table">
+      <thead><tr><th>項目名</th><th>種別</th><th>説明</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>ベータ版警告（Beta notice）</td>
+          <td><span class="tag tag-info">表示</span></td>
+          <td>「この機能はベータ版です」という注意書き。動作が不安定な場合があります。</td>
+        </tr>
+        <tr>
+          <td>System Audio Recording Permissions（システム音声録音権限）</td>
+          <td><span class="tag tag-info">セクション</span></td>
+          <td>Macのシステム音声をキャプチャするための権限設定です。初回は許可が必要です。</td>
+        </tr>
+        <tr>
+          <td>Grant Audio Recording Permission（音声録音権限を付与）</td>
+          <td><span class="tag tag-btn">ボタン</span></td>
+          <td>クリックするとmacOSのシステム設定が開き、MacWhisperへのマイク・音声キャプチャ権限を付与できます。これがないとApp Audioやシステム音声の録音ができません。</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="note">⚠️ <strong>初回設定で必ず行うこと：</strong>このボタンを押してシステム権限を付与してください。付与しないとZoom・Teams録音が使えません。</div>
+  </div>
+
+  <a href="#top" class="back-top">▲ 目次へ戻る</a>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     CH 14: 設定：ショートカット
+══════════════════════════════════════ -->
+<section class="chapter" id="ch14">
+  <div class="ch-eyebrow">CHAPTER 14 ── SETTINGS: SHORTCUTS</div>
+  <h2>設定 — Shortcuts（ショートカット）</h2>
+
+  <div class="screen-block">
+    <div class="screen-label">S05 — 設定：Shortcuts</div>
+    <h3>キーボードショートカット設定画面</h3>
+    <img class="screen-img" src="./screenshots/s05_settings_shortcuts.jpg" alt="設定 Shortcuts">
+    <table class="items-table">
+      <thead><tr><th>項目名</th><th>種別</th><th>説明</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Visible Shortcuts（表示中のショートカット）</td>
+          <td><span class="tag tag-info">セクション</span></td>
+          <td>サイドバーに表示されているショートカットボタンの一覧です。</td>
+        </tr>
+        <tr>
+          <td>Voice Memo</td>
+          <td><span class="tag tag-btn">ショートカット</span></td>
+          <td>サイドバーに表示中。キーボードショートカットを割り当てられます。</td>
+        </tr>
+        <tr>
+          <td>Open Files</td>
+          <td><span class="tag tag-btn">ショートカット</span></td>
+          <td>サイドバーに表示中。</td>
+        </tr>
+        <tr>
+          <td>App Audio</td>
+          <td><span class="tag tag-btn">ショートカット</span></td>
+          <td>サイドバーに表示中。</td>
+        </tr>
+        <tr>
+          <td>Batch Export</td>
+          <td><span class="tag tag-btn">ショートカット</span></td>
+          <td>サイドバーに表示中。</td>
+        </tr>
+        <tr>
+          <td>Podcast</td>
+          <td><span class="tag tag-btn">ショートカット</span></td>
+          <td>サイドバーに表示中。</td>
+        </tr>
+        <tr>
+          <td>Live Captions</td>
+          <td><span class="tag tag-btn">ショートカット</span></td>
+          <td>サイドバーに表示中。</td>
+        </tr>
+        <tr>
+          <td>YouTube &amp; URLs</td>
+          <td><span class="tag tag-btn">ショートカット</span></td>
+          <td>サイドバーに表示中。YouTubeやポッドキャストURLを素早く入力できます。</td>
+        </tr>
+        <tr>
+          <td>Manage Models（モデル管理）</td>
+          <td><span class="tag tag-btn">ショートカット</span></td>
+          <td>AIモデルのダウンロード・削除を管理します。</td>
+        </tr>
+        <tr>
+          <td>Record Teams / Record Zoom</td>
+          <td><span class="tag tag-btn">ショートカット</span></td>
+          <td>Teams・Zoom専用の録音ショートカット。</td>
+        </tr>
+        <tr>
+          <td>Hidden Shortcuts（非表示のショートカット）</td>
+          <td><span class="tag tag-info">セクション</span></td>
+          <td>サイドバーに表示していないが使えるショートカットの一覧。ここから表示に追加できます。</td>
+        </tr>
+        <tr>
+          <td>Show Add Shortcuts Button（ショートカット追加ボタンを表示）</td>
+          <td><span class="tag tag-toggle">トグル</span></td>
+          <td>ONにするとサイドバーの下部に「ショートカットを追加」ボタンが表示されます。</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <a href="#top" class="back-top">▲ 目次へ戻る</a>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     CH 15: 設定：マイク
+══════════════════════════════════════ -->
+<section class="chapter" id="ch15">
+  <div class="ch-eyebrow">CHAPTER 15 ── SETTINGS: MICROPHONE</div>
+  <h2>設定 — Microphone（マイク）</h2>
+
+  <div class="screen-block">
+    <div class="screen-label">S06 — 設定：Microphone</div>
+    <h3>マイク設定画面</h3>
+    <img class="screen-img" src="./screenshots/s06_settings_microphone.jpg" alt="設定 Microphone">
+    <table class="items-table">
+      <thead><tr><th>項目名</th><th>種別</th><th>説明</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Microphone Mode（マイクモード）</td>
+          <td><span class="tag tag-select">セレクター</span></td>
+          <td>使用するマイクを選択します。「System Default（MacBook Airのマイク）」に設定されています。外付けマイクやヘッドセットを接続すると選択肢が増えます。</td>
+        </tr>
+        <tr>
+          <td>System Default（MacBook Airのマイク）</td>
+          <td><span class="tag tag-info">現在の設定</span></td>
+          <td>MacBook Air内蔵マイクを使用します。静かな環境であれば十分な精度で録音できます。</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="note">💡 <strong>音質改善のヒント：</strong>外付けUSBマイクや、AirPods ProなどのBluetooth機器を接続すると、このセレクターで選択できるようになります。ノイズが少ない外部マイクの方が文字起こし精度が上がります。</div>
+  </div>
+
+  <a href="#top" class="back-top">▲ 目次へ戻る</a>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     CH 16: 設定：ディクテーション
+══════════════════════════════════════ -->
+<section class="chapter" id="ch16">
+  <div class="ch-eyebrow">CHAPTER 16 ── SETTINGS: DICTATION</div>
+  <h2>設定 — Dictation（ディクテーション）</h2>
+  <p class="chapter-lead">MacWhisperを使って文章を音声入力（ディクテーション）する機能の設定です。</p>
+
+  <div class="screen-block">
+    <div class="screen-label">S07 — 設定：Dictation</div>
+    <h3>ディクテーション設定画面</h3>
+    <img class="screen-img" src="./screenshots/s07_settings_dictation.jpg" alt="設定 Dictation">
+    <table class="items-table">
+      <thead><tr><th>項目名</th><th>種別</th><th>説明</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Microphone Permission（マイク権限）✓ 許可済み</td>
+          <td><span class="tag tag-info">ステータス</span></td>
+          <td>マイクへのアクセスが「許可済み」です（チェックマーク表示）。</td>
+        </tr>
+        <tr>
+          <td>Accessibility Permission（アクセシビリティ権限）要設定</td>
+          <td><span class="tag tag-info">ステータス</span></td>
+          <td>ディクテーション機能（話した言葉を任意のアプリにタイプ入力）を使うには、macOSのアクセシビリティ権限が必要です。「Enable（有効化）」ボタンで設定できます。</td>
+        </tr>
+        <tr>
+          <td>Enable（有効化）ボタン</td>
+          <td><span class="tag tag-btn">ボタン</span></td>
+          <td>クリックするとmacOSのシステム設定→プライバシー→アクセシビリティが開きます。MacWhisperを許可リストに追加してください。</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="note">💡 <strong>ディクテーションとは：</strong>MacWhisperに話しかけると、その言葉がブラウザ・メモ帳・Wordなど任意のアプリに自動でタイプされる機能です。キーボードを使わず声だけで文章を書けます。税理士試験の答案作成練習などにも使えます。</div>
+  </div>
+
+  <a href="#top" class="back-top">▲ 目次へ戻る</a>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     CH 17: 設定：ローカルモデル
+══════════════════════════════════════ -->
+<section class="chapter" id="ch17">
+  <div class="ch-eyebrow">CHAPTER 17 ── SETTINGS: LOCAL MODELS</div>
+  <h2>設定 — Local Models（ローカルモデル）</h2>
+  <p class="chapter-lead">Macにダウンロードして使うオフラインAIモデルを管理します。インターネット不要で動作します。</p>
+
+  <div class="screen-block">
+    <div class="screen-label">S08 — 設定：Local Models</div>
+    <h3>ローカルモデル管理画面</h3>
+    <img class="screen-img" src="./screenshots/s08_settings_local_models.jpg" alt="設定 Local Models">
+    <table class="items-table">
+      <thead><tr><th>項目名</th><th>種別</th><th>説明</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Downloaded（ダウンロード済み）セクション</td>
+          <td><span class="tag tag-info">セクション</span></td>
+          <td>すでにMacにダウンロードされているモデルの一覧です。</td>
+        </tr>
+        <tr>
+          <td>Large v3 Turbo ✓（使用中）</td>
+          <td><span class="tag tag-info">モデル</span></td>
+          <td>WhisperKitエンジンの高精度多言語モデル。現在アクティブに使用中（チェックマーク）。日本語を含む多言語に対応。</td>
+        </tr>
+        <tr>
+          <td>Parakeet v3（494MB）</td>
+          <td><span class="tag tag-info">モデル</span></td>
+          <td>英語特化モデル（NVIDIAが開発）。ダウンロード済み。英語のみの会議には最速・高精度。</td>
+        </tr>
+        <tr>
+          <td>Japanese（日本語特化） 1.52GB</td>
+          <td><span class="tag tag-info">モデル</span></td>
+          <td>日本語専用のWhisperモデル。ダウンロード済み。日本語会議・講義録音に特に有効。</td>
+        </tr>
+        <tr>
+          <td>日本語 ja-JP（Apple Speech）</td>
+          <td><span class="tag tag-info">モデル</span></td>
+          <td>AppleのオンデバイスSpeech認識モデル。軽量でダウンロード不要。</td>
+        </tr>
+        <tr>
+          <td>Recommended Models（おすすめモデル）セクション</td>
+          <td><span class="tag tag-info">セクション</span></td>
+          <td>まだダウンロードしていないおすすめモデルの一覧。</td>
+        </tr>
+        <tr>
+          <td>Small（483MB）</td>
+          <td><span class="tag tag-select">ダウンロード可</span></td>
+          <td>軽量で高速なモデル。精度はLargeより低いが、古いMacや速度重視の場合に。</td>
+        </tr>
+        <tr>
+          <td>Parakeet v3（1.24GB）</td>
+          <td><span class="tag tag-select">ダウンロード可</span></td>
+          <td>より高精度な英語モデルの大きいバージョン。</td>
+        </tr>
+        <tr>
+          <td>カテゴリフィルター（Apple Speech / Language Specific / WhisperKit）</td>
+          <td><span class="tag tag-btn">タブ</span></td>
+          <td>モデルをカテゴリ別に絞り込みます。WhisperKitはOpenAI Whisperベース、Apple SpeechはApple独自のAIです。</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <a href="#top" class="back-top">▲ 目次へ戻る</a>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     CH 18: 設定：クラウドモデル
+══════════════════════════════════════ -->
+<section class="chapter" id="ch18">
+  <div class="ch-eyebrow">CHAPTER 18 ── SETTINGS: CLOUD MODELS</div>
+  <h2>設定 — Cloud Models（クラウドモデル）</h2>
+  <p class="chapter-lead">インターネット経由でクラウドのAIサービスを使って文字起こしします。</p>
+
+  <div class="screen-block">
+    <div class="screen-label">S09 — 設定：Cloud Models</div>
+    <h3>クラウドモデル設定画面</h3>
+    <img class="screen-img" src="./screenshots/s09_settings_cloud_models.jpg" alt="設定 Cloud Models">
+    <table class="items-table">
+      <thead><tr><th>項目名</th><th>種別</th><th>説明</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>OpenAI（Configure）</td>
+          <td><span class="tag tag-btn">設定ボタン</span></td>
+          <td>OpenAI（ChatGPTの会社）のWhisper APIを使って文字起こしします。APIキーが必要です。クラウド処理なので高精度ですが料金が発生します。</td>
+        </tr>
+        <tr>
+          <td>Add another provider（別のプロバイダーを追加）</td>
+          <td><span class="tag tag-btn">ボタン</span></td>
+          <td>他のクラウドサービスを追加できます。</td>
+        </tr>
+        <tr>
+          <td>Groq</td>
+          <td><span class="tag tag-select">選択肢</span></td>
+          <td>GroqのAPIを使った高速文字起こし。Whisperモデルを超高速で実行できます（無料枠あり）。</td>
+        </tr>
+        <tr>
+          <td>Deepgram</td>
+          <td><span class="tag tag-select">選択肢</span></td>
+          <td>Deepgramの音声認識AIを使います。英語に強い。</td>
+        </tr>
+        <tr>
+          <td>ElevenLabs</td>
+          <td><span class="tag tag-select">選択肢</span></td>
+          <td>ElevenLabsのSTT（音声→テキスト）機能を使います。</td>
+        </tr>
+        <tr>
+          <td>Custom（カスタム）</td>
+          <td><span class="tag tag-select">選択肢</span></td>
+          <td>任意のAPIエンドポイントを設定できます。</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="note">💡 <strong>ローカル vs クラウドの使い分け：</strong>ローカルモデル（Large v3 Turbo等）はオフラインで無料。クラウドモデルはAPIキーと料金が必要ですが、ローカルより高精度なケースもあります。通常はローカルで十分です。</div>
+  </div>
+
+  <a href="#top" class="back-top">▲ 目次へ戻る</a>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     CH 19: 設定：翻訳
+══════════════════════════════════════ -->
+<section class="chapter" id="ch19">
+  <div class="ch-eyebrow">CHAPTER 19 ── SETTINGS: TRANSLATION</div>
+  <h2>設定 — Translation（翻訳）</h2>
+
+  <div class="screen-block">
+    <div class="screen-label">S10 — 設定：Translation</div>
+    <h3>翻訳設定画面</h3>
+    <img class="screen-img" src="./screenshots/s10_settings_translation.jpg" alt="設定 Translation">
+    <table class="items-table">
+      <thead><tr><th>項目名</th><th>種別</th><th>説明</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Provider（プロバイダー）</td>
+          <td><span class="tag tag-select">セレクター</span></td>
+          <td>翻訳に使うサービスを選択します。「Apple」に設定されています（オンデバイス翻訳。無料・オフライン）。DeepLやGoogle翻訳も追加可能。</td>
+        </tr>
+        <tr>
+          <td>Show Translations Side by Side（翻訳を並べて表示）</td>
+          <td><span class="tag tag-toggle">トグル</span></td>
+          <td>ONにすると原文と翻訳を左右（または上下）に並べて表示します。対訳で確認したいときに便利。</td>
+        </tr>
+        <tr>
+          <td>Show Translated Subtitles Only in Video Player（動画プレーヤーでは翻訳字幕のみ表示）</td>
+          <td><span class="tag tag-toggle">トグル</span></td>
+          <td>動画再生時に翻訳後の字幕のみを表示します（原文字幕を非表示にする）。</td>
+        </tr>
+        <tr>
+          <td>Translation Mode（翻訳モード）</td>
+          <td><span class="tag tag-select">セレクター</span></td>
+          <td>「Transcript And Segments（文字起こし全体とセグメント両方）」に設定されています。Transcriptのみ・Segmentsのみに変更できます。</td>
+        </tr>
+        <tr>
+          <td>Recently Used Languages（最近使った言語）</td>
+          <td><span class="tag tag-info">表示</span></td>
+          <td>「Japanese（日本語）」が表示されています。最近翻訳に使った言語が記録されます。</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <a href="#top" class="back-top">▲ 目次へ戻る</a>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     CH 20: 設定：エクスポート
+══════════════════════════════════════ -->
+<section class="chapter" id="ch20">
+  <div class="ch-eyebrow">CHAPTER 20 ── SETTINGS: EXPORT</div>
+  <h2>設定 — Export Formats &amp; Auto-Export（エクスポート）</h2>
+
+  <div class="screen-block">
+    <div class="screen-label">S11 — 設定：Export Formats</div>
+    <h3>エクスポート形式設定画面</h3>
+    <img class="screen-img" src="./screenshots/s11_settings_export_formats.jpg" alt="設定 Export Formats">
+    <table class="items-table">
+      <thead><tr><th>項目名</th><th>種別</th><th>説明</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Transcript .txt（テキストファイル）</td>
+          <td><span class="tag tag-toggle">トグル</span></td>
+          <td>プレーンテキスト形式（.txt）でエクスポートします。最もシンプルで汎用性が高い形式。</td>
+        </tr>
+        <tr>
+          <td>Export Formats詳細メニュー</td>
+          <td><span class="tag tag-info">セクション</span></td>
+          <td>各形式のトグルでエクスポートする形式を選択します。右側に設定メニュー（AI / Advanced / Pro / Roadmap / About）が表示されています。</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <hr class="divider">
+
+  <div class="screen-block">
+    <div class="screen-label">S12 — 設定：Auto-Export</div>
+    <h3>自動エクスポート設定画面</h3>
+    <img class="screen-img" src="./screenshots/s12_settings_auto_export.jpg" alt="設定 Auto-Export">
+    <table class="items-table">
+      <thead><tr><th>項目名</th><th>種別</th><th>説明</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Auto-Export Formats（自動エクスポート形式）</td>
+          <td><span class="tag tag-info">セクション</span></td>
+          <td>文字起こし完了後に自動でファイルに保存する形式を選択します。</td>
+        </tr>
+        <tr>
+          <td>Transcript .txt トグル</td>
+          <td><span class="tag tag-toggle">トグル</span></td>
+          <td>ONにすると文字起こしが完了するたびに自動的に.txtファイルとして保存します。</td>
+        </tr>
+        <tr>
+          <td>Extras（追加設定）セクション</td>
+          <td><span class="tag tag-info">セクション</span></td>
+          <td>追加で自動保存するコンテンツを選べます。</td>
+        </tr>
+        <tr>
+          <td>Recorded Audio（録音音声）</td>
+          <td><span class="tag tag-toggle">トグル</span></td>
+          <td>ONにすると録音した音声ファイル自体も自動保存します。</td>
+        </tr>
+        <tr>
+          <td>AI Summaries（AI要約）</td>
+          <td><span class="tag tag-toggle">トグル</span></td>
+          <td>ONにするとAI要約も自動保存します（AIサービス設定が必要）。</td>
+        </tr>
+        <tr>
+          <td>保存フォルダの説明</td>
+          <td><span class="tag tag-info">表示</span></td>
+          <td>自動エクスポートファイルがどのフォルダに保存されるかを説明しています。デフォルトはMacのDocumentsフォルダ。</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <a href="#top" class="back-top">▲ 目次へ戻る</a>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     CH 21: 設定：連携・AI
+══════════════════════════════════════ -->
+<section class="chapter" id="ch21">
+  <div class="ch-eyebrow">CHAPTER 21 ── SETTINGS: INTEGRATIONS &amp; AI</div>
+  <h2>設定 — Integrations &amp; AI Services</h2>
+
+  <div class="screen-block">
+    <div class="screen-label">S13 — 設定：Integrations（外部連携）</div>
+    <h3>外部サービス連携設定画面</h3>
+    <img class="screen-img" src="./screenshots/s13_settings_integrations.jpg" alt="設定 Integrations">
+    <table class="items-table">
+      <thead><tr><th>項目名</th><th>種別</th><th>説明</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Automation（自動化）</td>
+          <td><span class="tag tag-info">セクション</span></td>
+          <td>文字起こし完了後に自動でアクションを実行する設定です。</td>
+        </tr>
+        <tr>
+          <td>Automatically send after finished transcription ON（文字起こし完了後に自動送信）</td>
+          <td><span class="tag tag-toggle">トグル ON</span></td>
+          <td>ONになっています。文字起こしが終わったら自動で後述のWebhookに送信します。</td>
+        </tr>
+        <tr>
+          <td>Title Format（タイトル形式）</td>
+          <td><span class="tag tag-info">テキスト</span></td>
+          <td>Webhookで送信するデータのタイトル形式を指定します。</td>
+        </tr>
+        <tr>
+          <td>Zapier webhook</td>
+          <td><span class="tag tag-info">入力欄</span></td>
+          <td>ZapierのWebhook URLを入力します。Zapierで自動化フローを作ると「文字起こし完了→Slackに通知」「→Googleスプレッドシートに保存」などが実現できます。</td>
+        </tr>
+        <tr>
+          <td>Make.com webhook + API Key</td>
+          <td><span class="tag tag-info">入力欄</span></td>
+          <td>Make.com（旧Integromat）との連携設定。Make.comのシナリオURLとAPIキーを入力します。</td>
+        </tr>
+        <tr>
+          <td>n8n webhook</td>
+          <td><span class="tag tag-info">入力欄</span></td>
+          <td>オープンソースの自動化ツール「n8n」のWebhook URLを入力します。</td>
+        </tr>
+        <tr>
+          <td>Custom Webhook（カスタムWebhook）</td>
+          <td><span class="tag tag-info">入力欄</span></td>
+          <td>任意のWebhook URLを入力します。自社システムへの連携などに使います。</td>
+        </tr>
+        <tr>
+          <td>Obsidian（見切れ）</td>
+          <td><span class="tag tag-info">連携</span></td>
+          <td>ノートアプリ「Obsidian」との連携設定。文字起こし結果をObsidianのVaultに自動保存できます。</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="note">💡 <strong>テレビ販売への活用例：</strong>商品説明の文字起こし→Zapier経由でNotionの商品データベースに自動保存、という自動化フローを組むことができます。</div>
+  </div>
+
+  <hr class="divider">
+
+  <div class="screen-block">
+    <div class="screen-label">S14 — 設定：AI Services</div>
+    <h3>AIサービス設定画面</h3>
+    <img class="screen-img" src="./screenshots/s14_settings_ai_services.jpg" alt="設定 AI Services">
+    <table class="items-table">
+      <thead><tr><th>項目名</th><th>種別</th><th>説明</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Add another service（別のサービスを追加）</td>
+          <td><span class="tag tag-btn">ボタン</span></td>
+          <td>AIチャット・要約に使う外部サービスを追加できます。</td>
+        </tr>
+        <tr>
+          <td>Google（Gemini）</td>
+          <td><span class="tag tag-select">選択肢</span></td>
+          <td>Google GeminiのAPIを使います。APIキーが必要。</td>
+        </tr>
+        <tr>
+          <td>LM Studio</td>
+          <td><span class="tag tag-select">選択肢</span></td>
+          <td>ローカルで動くLLMツール「LM Studio」と連携します。オフラインで高精度なAIが使えます。</td>
+        </tr>
+        <tr>
+          <td>Ollama</td>
+          <td><span class="tag tag-select">選択肢</span></td>
+          <td>ローカルLLMツール「Ollama」と連携します。LlamaやMistralなどのモデルが使えます。</td>
+        </tr>
+        <tr>
+          <td>OpenAI（ChatGPT）</td>
+          <td><span class="tag tag-select">選択肢</span></td>
+          <td>ChatGPT（GPT-4等）のAPIを使います。APIキーが必要。</td>
+        </tr>
+        <tr>
+          <td>OpenRouter</td>
+          <td><span class="tag tag-select">選択肢</span></td>
+          <td>複数のAIモデルをまとめて使えるサービス「OpenRouter」と連携します。</td>
+        </tr>
+        <tr>
+          <td>Anthropic（Claude）</td>
+          <td><span class="tag tag-select">選択肢</span></td>
+          <td>ClaudeのAPIを使います。高精度な要約・分析が可能です。</td>
+        </tr>
+        <tr>
+          <td>Azure（Microsoft Azure OpenAI）</td>
+          <td><span class="tag tag-select">選択肢</span></td>
+          <td>Microsoft Azure経由のOpenAI APIを使います。</td>
+        </tr>
+        <tr>
+          <td>xAI</td>
+          <td><span class="tag tag-select">選択肢</span></td>
+          <td>xAI（Grokモデル）のAPIを使います。</td>
+        </tr>
+        <tr>
+          <td>Hugging Face</td>
+          <td><span class="tag tag-select">選択肢</span></td>
+          <td>Hugging FaceのホスティングAPIを使います。</td>
+        </tr>
+        <tr>
+          <td>Deepseek</td>
+          <td><span class="tag tag-select">選択肢</span></td>
+          <td>中国発の高性能AI「Deepseek」のAPIを使います。</td>
+        </tr>
+        <tr>
+          <td>Groq</td>
+          <td><span class="tag tag-select">選択肢</span></td>
+          <td>Groq（超高速AI推論）のAPIを使います。無料枠が大きく試しやすいです。</td>
+        </tr>
+        <tr>
+          <td>Custom（カスタム）</td>
+          <td><span class="tag tag-select">選択肢</span></td>
+          <td>任意のOpenAI互換APIエンドポイントを設定できます。</td>
+        </tr>
+        <tr>
+          <td>Foundation Model（基盤モデル）→ Apple</td>
+          <td><span class="tag tag-info">現在の設定</span></td>
+          <td>デフォルトはAppleのオンデバイスAI（Apple Intelligence）を使用します。無料・オフラインで動作します。</td>
+        </tr>
+        <tr>
+          <td>claude-sonnet-4-6（設定済み）</td>
+          <td><span class="tag tag-info">設定済み</span></td>
+          <td>Claude Sonnet 4.6がAPIキーとともに設定されています。これを使うとClaudeによる要約・AIチャットが利用できます。</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <a href="#top" class="back-top">▲ 目次へ戻る</a>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     CH 22: 設定：About
+══════════════════════════════════════ -->
+<section class="chapter" id="ch22">
+  <div class="ch-eyebrow">CHAPTER 22 ── SETTINGS: ABOUT</div>
+  <h2>設定 — About（バージョン情報）</h2>
+
+  <div class="screen-block">
+    <div class="screen-label">S15 — 設定：About</div>
+    <h3>アプリのバージョン情報・開発者情報</h3>
+    <img class="screen-img" src="./screenshots/s15_settings_about.jpg" alt="設定 About">
+    <table class="items-table">
+      <thead><tr><th>項目名</th><th>種別</th><th>説明</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>MacWhisper Pro 13.21.4 (1427)</td>
+          <td><span class="tag tag-info">バージョン</span></td>
+          <td>現在インストールされているバージョンです。アップデートが来たら随時更新してください。</td>
+        </tr>
+        <tr>
+          <td>Made by Jordi Bruin, Ian Dundas and friends</td>
+          <td><span class="tag tag-info">開発者</span></td>
+          <td>MacWhisperの開発者はJordi BruinとIan Dundas、およびそのチームです。オランダのインディー開発者です。</td>
+        </tr>
+        <tr>
+          <td>Feedback（フィードバック）</td>
+          <td><span class="tag tag-btn">ボタン</span></td>
+          <td>開発者にフィードバック・バグ報告を送ります。</td>
+        </tr>
+        <tr>
+          <td>Reddit</td>
+          <td><span class="tag tag-btn">ボタン</span></td>
+          <td>MacWhisperのRedditコミュニティを開きます。ユーザー同士の情報交換の場です。</td>
+        </tr>
+        <tr>
+          <td>Acknowledgements（謝辞）</td>
+          <td><span class="tag tag-btn">ボタン</span></td>
+          <td>使用しているオープンソースライブラリの一覧です。</td>
+        </tr>
+        <tr>
+          <td>Share with friends（友達にシェア）</td>
+          <td><span class="tag tag-btn">ボタン</span></td>
+          <td>MacWhisperを友人に紹介するためのシェアリンクを生成します。</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <a href="#top" class="back-top">▲ 目次へ戻る</a>
+</section>
+
+</div><!-- /.wrap -->
+
+
+<footer>
+  <div class="wrap">
+    <div class="stamp">声 → 文字 → 知識</div>
+    <p>MacWhisper Pro 完全操作ガイド ／ バージョン 13.21.4 (1427)<br>
+    作成：2026年6月 ／ MacBook Air M5 ／ 全39画面・全項目解説</p>
+    <p style="margin-top:12px; font-size:.76rem;">
+      本ガイドはスクリーン収録から抽出した実機スクリーンショットをもとに作成しています。<br>
+      最新版の情報は <a href="https://www.macwhisper.com" style="color:var(--vermillion)">macwhisper.com</a> でご確認ください。
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>
