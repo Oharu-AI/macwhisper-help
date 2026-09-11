@@ -199,6 +199,53 @@
   }
   .note strong { color: var(--vermillion); }
 
+  /* ── VERSION UPDATE ── */
+  .update-banner {
+    border: 1px solid var(--gold);
+    background: linear-gradient(135deg, var(--paper-deep), var(--paper));
+    padding: 22px;
+    margin: 8px 0 28px;
+    border-radius: 8px;
+  }
+  .update-banner h3 { margin-bottom: 8px; }
+  .update-banner p { font-family: "Hiragino Kaku Gothic ProN", sans-serif; font-size: .9rem; }
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin: 18px 0 24px;
+  }
+  .feature-card {
+    border: 1px solid var(--line);
+    background: var(--paper-deep);
+    border-radius: 6px;
+    padding: 15px 16px;
+    font-family: "Hiragino Kaku Gothic ProN", sans-serif;
+    font-size: .88rem;
+  }
+  .feature-card strong { display: block; color: var(--vermillion); margin-bottom: 4px; }
+  .source-note {
+    display: block;
+    margin: -10px 0 20px;
+    font-family: "Hiragino Kaku Gothic ProN", sans-serif;
+    font-size: .74rem;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+  .source-note a { color: var(--vermillion); }
+  .provider-list {
+    display: flex; flex-wrap: wrap; gap: 7px;
+    margin: 12px 0 18px;
+  }
+  .provider-list span {
+    border: 1px solid var(--line);
+    background: var(--paper-deep);
+    border-radius: 999px;
+    padding: 3px 10px;
+    font-family: "Hiragino Kaku Gothic ProN", sans-serif;
+    font-size: .78rem;
+  }
+
   /* ── DIVIDER ── */
   .divider {
     border: none; border-top: 1px dashed var(--line);
@@ -240,6 +287,7 @@
     .items-table td:first-child { min-width: 100px; font-size: .82rem; }
     .items-table td { padding: 9px 8px; font-size: .88rem; }
     .items-table thead th { font-size: .65rem; }
+    .feature-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -249,7 +297,7 @@
   <div class="wrap">
     <div class="hero-mark">MacWhisper Pro ── 完全操作ガイド</div>
     <h1>各画面・各項目を<em>ひとつずつ</em>解説</h1>
-    <p class="sub">バージョン 13.21.4 (1427) ・ MacBook Air M5 ・ 2026年6月作成</p>
+    <p class="sub">バージョン 14.8.1 (1481) ・ MacBook Air M5 ・ 2026年9月更新</p>
   </div>
 </header>
 
@@ -258,6 +306,7 @@
   <div class="wrap">
     <div class="toc-title">目次 TABLE OF CONTENTS</div>
     <div class="toc-grid">
+      <a href="#updates"><span class="toc-num">NEW</span>14.8.1 更新情報</a>
       <a href="#ch1"><span class="toc-num">01</span>ホーム画面</a>
       <a href="#ch2"><span class="toc-num">02</span>アプリ音声録音</a>
       <a href="#ch3"><span class="toc-num">03</span>ポッドキャスト</a>
@@ -289,6 +338,52 @@
      CH 1: ホーム画面
 ══════════════════════════════════════ -->
 <div class="wrap">
+
+<!-- ══════════════════════════════════════
+     VERSION UPDATE: 14.8.1
+══════════════════════════════════════ -->
+<section class="chapter" id="updates">
+  <div class="ch-eyebrow">VERSION UPDATE ── SEPTEMBER 2026</div>
+  <h2>14.8.1で追加・改善されたこと</h2>
+  <p class="chapter-lead">2026年9月2日公開の14.8.1では、クラウド文字起こしに「Gemini 3.5 Transcribe」が追加されました。ひとつ前の14.8で加わった改善も含め、普段の操作に関係する変更をまとめます。</p>
+
+  <div class="update-banner">
+    <h3>今回の中心：Gemini 3.5 Transcribe</h3>
+    <p>「設定 → Cloud Models → Gemini → Configure」でGoogle AI StudioのAPIキーを登録すると使えます。Geminiアプリの契約とは別に、Gemini APIの利用条件と料金が適用されます。</p>
+  </div>
+
+  <div class="feature-grid">
+    <div class="feature-card"><h3>日本語に対応</h3><p>Googleの対応言語一覧には日本語（ja-JP）が含まれています。</p></div>
+    <div class="feature-card"><h3>話者を区別</h3><p>複数人の発言を話者ごとに分けて文字起こしできます。</p></div>
+    <div class="feature-card"><h3>単語ごとの時刻</h3><p>単語単位のタイムスタンプを取得でき、該当箇所を探しやすくなります。</p></div>
+    <div class="feature-card"><h3>複数言語を自動判定</h3><p>会話途中で言語が切り替わる音声にも対応します。</p></div>
+  </div>
+
+  <div class="note">🔒 <strong>機密性を優先する場合：</strong>Geminiはクラウド文字起こしのため、音声がGoogleのサーバーへ送信されます。社外秘の会議や個人情報を含む音声は、送信先の利用条件を確認するか、オフラインで処理するローカルモデルを使ってください。</div>
+
+  <hr class="divider">
+
+  <div class="screen-block">
+    <div class="screen-label">OFFICIAL REFERENCE — クラウドモデル選択</div>
+    <h3>ローカル処理とクラウド処理を選ぶ画面</h3>
+    <img class="screen-img" src="./screenshots/official_cloud_model_picker.png" alt="MacWhisper公式ヘルプのクラウドモデル選択画面">
+    <p class="source-note">出典：<a href="https://docs.macwhisper.com/article/18-cloud-transcription">MacWhisper公式ヘルプ「Cloud Transcription」</a>。画像は旧版の画面例です。14.8.1ではGeminiを含む対応サービスが増えています。</p>
+  </div>
+
+  <table class="items-table">
+    <thead><tr><th>バージョン</th><th>主な変更</th></tr></thead>
+    <tbody>
+      <tr><td>14.8.1</td><td>Gemini 3.5 Transcribeを追加。話者区別、単語タイムスタンプ、複数言語の自動判定に対応。</td></tr>
+      <tr><td>14.8</td><td>ディクテーション履歴から録音音声を書き出せるようになりました。モデルの準備をダウンロード直後に行うため、初回文字起こしの待ち時間も短縮されています。</td></tr>
+      <tr><td>14.8</td><td>エラー表示に使用エンジン名が出るようになり、モデル一覧の通信回数を減らして起動時の安定性を改善。録音停止・変換中止など複数の不具合も修正。</td></tr>
+    </tbody>
+  </table>
+
+  <p class="source-note">MacWhisperの更新履歴では「76言語」、現在のGoogle公式資料では「85以上の言語と地域」と案内されています。サービス側の対応範囲は変わるため、実際にMacWhisperへ表示される選択肢を優先してください。</p>
+  <p class="source-note">確認先：<a href="https://macwhisper-site.vercel.app/release_notes.html">MacWhisper公式リリースノート</a> ／ <a href="https://ai.google.dev/gemini-api/docs/transcribe?hl=ja">Google公式「音声文字変換」</a></p>
+
+  <a href="#top" class="back-top">▲ 目次へ戻る</a>
+</section>
 
 <section class="chapter" id="ch1">
   <div class="ch-eyebrow">CHAPTER 01 ── HOME</div>
@@ -774,6 +869,7 @@
   <div class="ch-eyebrow">CHAPTER 06 ── HISTORY</div>
   <h2>文字起こし履歴・削除済み</h2>
   <p class="chapter-lead">過去に行った文字起こしの一覧と、削除したアイテムを管理します。</p>
+  <div class="note">🆕 <strong>14.8：</strong>ディクテーション履歴を右クリックし、保存されている録音音声を書き出せるようになりました。</div>
 
   <div class="screen-block">
     <div class="screen-label">17 — 最近削除したもの</div>
@@ -848,7 +944,14 @@
 <section class="chapter" id="ch7">
   <div class="ch-eyebrow">CHAPTER 07 ── TRANSCRIPT DETAIL</div>
   <h2>文字起こし詳細表示</h2>
-  <p class="chapter-lead">文字起こし結果の詳細ビューです。タイムスタンプ付きセグメント表示と段落表示を切り替えられます。</p>
+  <p class="chapter-lead">14系のEditor Viewでは、文字起こし結果を見ながら直接編集できます。タイムスタンプ付きセグメント表示と段落表示の切り替えに加え、文章の修正や話者整理がしやすくなりました。</p>
+
+  <div class="feature-grid">
+    <div class="feature-card"><h3>本文を直接編集</h3><p>文字起こし結果をその場で修正し、段落を追加できます。</p></div>
+    <div class="feature-card"><h3>話者を整理</h3><p>発言の話者を割り当て直せます。14.6では選択メニューから新しい話者の作成にも対応しました。</p></div>
+    <div class="feature-card"><h3>重要箇所を保存</h3><p>必要なセグメントをお気に入りとして目印にできます。</p></div>
+    <div class="feature-card"><h3>長い音声も軽快に</h3><p>大量のセグメントを含む文字起こしの表示性能が改善されています。</p></div>
+  </div>
 
   <div class="screen-block">
     <div class="screen-label">19 — セグメント表示</div>
@@ -955,7 +1058,7 @@
         <tr>
           <td>Loading Model（モデル読み込み中）</td>
           <td><span class="tag tag-info">ステータス</span></td>
-          <td>AIモデル（Large v3 Turboなど）をメモリに展開中です。初回は数秒かかりますが、2回目以降はキャッシュされて速くなります。</td>
+          <td>AIモデル（Large v3 Turboなど）をメモリに展開中です。14.8からモデルはダウンロード直後に準備されるため、最初の文字起こしで発生していた一度きりの準備待ちが減りました。</td>
         </tr>
         <tr>
           <td>録音波形・マイクレベル</td>
@@ -1522,12 +1625,16 @@
 <section class="chapter" id="ch18">
   <div class="ch-eyebrow">CHAPTER 18 ── SETTINGS: CLOUD MODELS</div>
   <h2>設定 — Cloud Models（クラウドモデル）</h2>
-  <p class="chapter-lead">インターネット経由でクラウドのAIサービスを使って文字起こしします。</p>
+  <p class="chapter-lead">インターネット経由でクラウドのAIサービスを使って文字起こしします。14.8.1の実機では、OpenAIを含む18種類の接続先を確認できます。</p>
 
   <div class="screen-block">
     <div class="screen-label">S09 — 設定：Cloud Models</div>
-    <h3>クラウドモデル設定画面</h3>
+    <h3>クラウドモデル設定画面（旧版の画面例）</h3>
     <img class="screen-img" src="./screenshots/s09_settings_cloud_models.jpg" alt="設定 Cloud Models">
+    <p class="source-note">この画像は13.21.4で撮影したものです。現在は下記のサービスが追加され、選択肢が増えています。</p>
+    <div class="provider-list" aria-label="14.8.1で確認したクラウド文字起こしサービス">
+      <span>OpenAI</span><span>Groq</span><span>Deepgram</span><span>Gladia</span><span>AssemblyAI</span><span>Gemini</span><span>Speechmatics</span><span>ElevenLabs</span><span>Rev AI</span><span>Mistral</span><span>xAI</span><span>Corti</span><span>Cartesia</span><span>Cohere</span><span>Avalon</span><span>OpenRouter</span><span>Volcengine</span><span>Custom</span>
+    </div>
     <table class="items-table">
       <thead><tr><th>項目名</th><th>種別</th><th>説明</th></tr></thead>
       <tbody>
@@ -1539,7 +1646,12 @@
         <tr>
           <td>Add another provider（別のプロバイダーを追加）</td>
           <td><span class="tag tag-btn">ボタン</span></td>
-          <td>他のクラウドサービスを追加できます。</td>
+          <td>他のクラウドサービスを追加します。使いたいサービスを選び、各社で取得したAPIキーを登録します。</td>
+        </tr>
+        <tr>
+          <td>Gemini（3.5 Transcribe）</td>
+          <td><span class="tag tag-select">選択肢</span></td>
+          <td>14.8.1で追加。日本語を含む多言語の自動判定、話者区別、単語タイムスタンプに対応します。Google AI StudioのAPIキーが必要です。</td>
         </tr>
         <tr>
           <td>Groq</td>
@@ -1563,7 +1675,7 @@
         </tr>
       </tbody>
     </table>
-    <div class="note">💡 <strong>ローカル vs クラウドの使い分け：</strong>ローカルモデル（Large v3 Turbo等）はオフラインで無料。クラウドモデルはAPIキーと料金が必要ですが、ローカルより高精度なケースもあります。通常はローカルで十分です。</div>
+    <div class="note">💡 <strong>ローカル vs クラウドの使い分け：</strong>ローカルモデル（Large v3 Turbo等）は音声をMac内で処理できます。クラウドモデルは音声を各サービスへ送信し、多くの場合APIキーと利用料金が必要です。機密性・費用・必要な機能を比べて選んでください。</div>
   </div>
 
   <a href="#top" class="back-top">▲ 目次へ戻る</a>
@@ -1852,15 +1964,16 @@
 
   <div class="screen-block">
     <div class="screen-label">S15 — 設定：About</div>
-    <h3>アプリのバージョン情報・開発者情報</h3>
+    <h3>アプリのバージョン情報・開発者情報（画像は旧版）</h3>
     <img class="screen-img" src="./screenshots/s15_settings_about.jpg" alt="設定 About">
+    <p class="source-note">画像は13.21.4で撮影した画面です。このガイドの更新時に確認した最新版は14.8.1（1481）です。</p>
     <table class="items-table">
       <thead><tr><th>項目名</th><th>種別</th><th>説明</th></tr></thead>
       <tbody>
         <tr>
-          <td>MacWhisper Pro 13.21.4 (1427)</td>
+          <td>MacWhisper Pro 14.8.1 (1481)</td>
           <td><span class="tag tag-info">バージョン</span></td>
-          <td>現在インストールされているバージョンです。アップデートが来たら随時更新してください。</td>
+          <td>2026年9月11日に実機で確認したバージョンです。画面に表示される番号は、今後のアップデートで変わります。</td>
         </tr>
         <tr>
           <td>Made by Jordi Bruin, Ian Dundas and friends</td>
@@ -1900,11 +2013,11 @@
 <footer>
   <div class="wrap">
     <div class="stamp">声 → 文字 → 知識</div>
-    <p>MacWhisper Pro 完全操作ガイド ／ バージョン 13.21.4 (1427)<br>
-    作成：2026年6月 ／ MacBook Air M5 ／ 全39画面・全項目解説</p>
+    <p>MacWhisper Pro 完全操作ガイド ／ バージョン 14.8.1 (1481)<br>
+    初版：2026年6月 ／ 更新：2026年9月 ／ MacBook Air M5</p>
     <p style="margin-top:12px; font-size:.76rem;">
-      本ガイドはスクリーン収録から抽出した実機スクリーンショットをもとに作成しています。<br>
-      最新版の情報は <a href="https://www.macwhisper.com" style="color:var(--vermillion)">macwhisper.com</a> でご確認ください。
+      既存の実機画面39点は13.21.4で撮影し、14.8.1で変わった内容は実機確認と公式資料をもとに更新しています。<br>
+      最新版の情報は <a href="https://macwhisper-site.vercel.app/release_notes.html" style="color:var(--vermillion)">MacWhisper公式リリースノート</a> でご確認ください。
     </p>
   </div>
 </footer>
