@@ -297,7 +297,7 @@
   <div class="wrap">
     <div class="hero-mark">MacWhisper Pro ── 完全操作ガイド</div>
     <h1>各画面・各項目を<em>ひとつずつ</em>解説</h1>
-    <p class="sub">バージョン 14.8.1 (1481) ・ MacBook Air M5 ・ 2026年9月更新</p>
+    <p class="sub">バージョン 15.4 (1540) ・ MacBook Air M5 ・ 2026年10月更新</p>
   </div>
 </header>
 
@@ -306,7 +306,7 @@
   <div class="wrap">
     <div class="toc-title">目次 TABLE OF CONTENTS</div>
     <div class="toc-grid">
-      <a href="#updates"><span class="toc-num">NEW</span>14.8.1 更新情報</a>
+      <a href="#updates"><span class="toc-num">NEW</span>15.4 更新情報</a>
       <a href="#ch1"><span class="toc-num">01</span>ホーム画面</a>
       <a href="#ch2"><span class="toc-num">02</span>アプリ音声録音</a>
       <a href="#ch3"><span class="toc-num">03</span>ポッドキャスト</a>
@@ -340,26 +340,26 @@
 <div class="wrap">
 
 <!-- ══════════════════════════════════════
-     VERSION UPDATE: 14.8.1
+     VERSION UPDATE: 15.4
 ══════════════════════════════════════ -->
 <section class="chapter" id="updates">
-  <div class="ch-eyebrow">VERSION UPDATE ── SEPTEMBER 2026</div>
-  <h2>14.8.1で追加・改善されたこと</h2>
-  <p class="chapter-lead">2026年9月2日公開の14.8.1では、クラウド文字起こしに「Gemini 3.5 Transcribe」が追加されました。ひとつ前の14.8で加わった改善も含め、普段の操作に関係する変更をまとめます。</p>
+  <div class="ch-eyebrow">VERSION UPDATE ── OCTOBER 2026</div>
+  <h2>15.4までに追加・改善されたこと</h2>
+  <p class="chapter-lead">2026年10月7日（日本時間）公開の15.4では、Qwen3-ASRの対応拡大、録音中の容量不足対策、SpaceXAIのクラウド文字起こし、会議録音の権限・音質改善が行われました。15系で加わった大きな変更もまとめて確認します。</p>
 
   <div class="update-banner">
-    <h3>今回の中心：Gemini 3.5 Transcribe</h3>
-    <p>「設定 → Cloud Models → Gemini → Configure」でGoogle AI StudioのAPIキーを登録すると使えます。Geminiアプリの契約とは別に、Gemini APIの利用条件と料金が適用されます。</p>
+    <h3>重要：15系はmacOS 15以降が必要</h3>
+    <p>MacWhisper 15.0以降はmacOS 15以上に対応します。macOS 14を使う場合は14.8.1が最終版です。更新前に「 → このMacについて」でmacOSの番号を確認してください。</p>
   </div>
 
   <div class="feature-grid">
-    <div class="feature-card"><h3>日本語に対応</h3><p>Googleの対応言語一覧には日本語（ja-JP）が含まれています。</p></div>
-    <div class="feature-card"><h3>話者を区別</h3><p>複数人の発言を話者ごとに分けて文字起こしできます。</p></div>
-    <div class="feature-card"><h3>単語ごとの時刻</h3><p>単語単位のタイムスタンプを取得でき、該当箇所を探しやすくなります。</p></div>
-    <div class="feature-card"><h3>複数言語を自動判定</h3><p>会話途中で言語が切り替わる音声にも対応します。</p></div>
+    <div class="feature-card"><h3>フォルダで整理</h3><p>文字起こしをフォルダ・サブフォルダに分け、ドラッグ操作で整理できます。</p></div>
+    <div class="feature-card"><h3>会議をその場で文字化</h3><p>録音と同時に話者識別付きのライブ文字起こしを表示します。</p></div>
+    <div class="feature-card"><h3>Qwen3-ASR</h3><p>30言語に対応する高精度ローカルモデル。15.4で対応するM1 Macにも拡大しました。</p></div>
+    <div class="feature-card"><h3>録音を安全に停止</h3><p>空き容量が少なくなると警告し、ディスクが満杯になる前に録音を安全に止めます。</p></div>
   </div>
 
-  <div class="note">🔒 <strong>機密性を優先する場合：</strong>Geminiはクラウド文字起こしのため、音声がGoogleのサーバーへ送信されます。社外秘の会議や個人情報を含む音声は、送信先の利用条件を確認するか、オフラインで処理するローカルモデルを使ってください。</div>
+  <div class="note">⚠️ <strong>ライブ会議文字起こしはベータ版：</strong>公式は、重要な会議では録音が失われる可能性もあると案内しています。重要な場面では別の録音手段も併用してください。</div>
 
   <hr class="divider">
 
@@ -367,20 +367,22 @@
     <div class="screen-label">OFFICIAL REFERENCE — クラウドモデル選択</div>
     <h3>ローカル処理とクラウド処理を選ぶ画面</h3>
     <img class="screen-img" src="./screenshots/official_cloud_model_picker.png" alt="MacWhisper公式ヘルプのクラウドモデル選択画面">
-    <p class="source-note">出典：<a href="https://docs.macwhisper.com/article/18-cloud-transcription">MacWhisper公式ヘルプ「Cloud Transcription」</a>。画像は旧版の画面例です。14.8.1ではGeminiを含む対応サービスが増えています。</p>
+    <p class="source-note">出典：<a href="https://docs.macwhisper.com/article/18-cloud-transcription">MacWhisper公式ヘルプ「Cloud Transcription」</a>。画像は旧版の画面例です。15.4ではGeminiやSpaceXAIを含む対応サービスが増えています。</p>
   </div>
 
   <table class="items-table">
     <thead><tr><th>バージョン</th><th>主な変更</th></tr></thead>
     <tbody>
+      <tr><td>15.4</td><td>Qwen3-ASRのM1対応、録音中の容量不足対策、SpaceXAIのGrok Voice Transcribe 2、CoreAudioによる会議・アプリ音声録音を追加。</td></tr>
+      <tr><td>15.3</td><td>話者認識をNemotronまたはPyannoteから選択可能にし、Tencent Meeting・VooV Meetingへ対応。監視フォルダの信頼性も改善。</td></tr>
+      <tr><td>15.2〜15.2.1</td><td>Nemotron 3で最大8話者を識別。ライブ会議文字起こしを標準でONにし、AIサービスの接続テストを追加。</td></tr>
+      <tr><td>15.1</td><td>Qwen3-ASRを追加。30言語のファイル文字起こし、ライブ会議、Live Captionsに対応。</td></tr>
+      <tr><td>15.0.1</td><td>フォルダ整理、ライブ会議文字起こし、共有メニュー、Spotlight・Siri・Shortcuts連携、Markdown書き出しを追加。</td></tr>
       <tr><td>14.8.1</td><td>Gemini 3.5 Transcribeを追加。話者区別、単語タイムスタンプ、複数言語の自動判定に対応。</td></tr>
-      <tr><td>14.8</td><td>ディクテーション履歴から録音音声を書き出せるようになりました。モデルの準備をダウンロード直後に行うため、初回文字起こしの待ち時間も短縮されています。</td></tr>
-      <tr><td>14.8</td><td>エラー表示に使用エンジン名が出るようになり、モデル一覧の通信回数を減らして起動時の安定性を改善。録音停止・変換中止など複数の不具合も修正。</td></tr>
     </tbody>
   </table>
 
-  <p class="source-note">MacWhisperの更新履歴では「76言語」、現在のGoogle公式資料では「85以上の言語と地域」と案内されています。サービス側の対応範囲は変わるため、実際にMacWhisperへ表示される選択肢を優先してください。</p>
-  <p class="source-note">確認先：<a href="https://macwhisper-site.vercel.app/release_notes.html">MacWhisper公式リリースノート</a> ／ <a href="https://ai.google.dev/gemini-api/docs/transcribe?hl=ja">Google公式「音声文字変換」</a></p>
+  <p class="source-note">確認先：<a href="https://macwhisper-site.vercel.app/appcast.xml">MacWhisper公式更新フィード</a> ／ <a href="https://macwhisper-site.vercel.app/release_notes.html">MacWhisper公式リリースノート</a></p>
 
   <a href="#top" class="back-top">▲ 目次へ戻る</a>
 </section>
@@ -389,6 +391,7 @@
   <div class="ch-eyebrow">CHAPTER 01 ── HOME</div>
   <h2>ホーム画面</h2>
   <p class="chapter-lead">アプリを起動すると最初に表示される画面です。左側のサイドバーに主要な機能ボタンが並びます。</p>
+  <div class="note">🆕 <strong>15系のサイドバー：</strong>Queue、History、Transcriptions、Meetings、Dictations、Recently Deletedに加え、文字起こしを整理する「Folders」と話者を管理する「People」が表示されます。下の画像は旧版の配置です。</div>
 
   <!-- 01 -->
   <div class="screen-block">
@@ -771,7 +774,7 @@
         <tr>
           <td>Whisper C++ Japanese（日本語専用モデル）</td>
           <td><span class="tag tag-select">モデル</span></td>
-          <td>日本語に特化したWhisperモデル。日本語のみを話す場面（税理士講義、日本語会議など）では最も精度が高いです。サイズ：1.52GB。</td>
+          <td>日本語に特化したWhisperモデル。日本語のみを話す講義などで比較候補になります。15.4実機では話者認識対応の表示がないため、複数話者を分けたい場合はQwen3-ASRまたはLarge v3 Turboを選びます。サイズ：1.52GB。</td>
         </tr>
         <tr>
           <td>日本語（Apple Speech）</td>
@@ -780,7 +783,7 @@
         </tr>
       </tbody>
     </table>
-    <div class="note">🎯 <strong>日本語の会議・講義録音には：</strong>「Whisper C++ Japanese」または「Large v3 Turbo」がおすすめです。税理士試験の講義音声の文字起こしには日本語専用モデルが有効です。</div>
+    <div class="note">🎯 <strong>日本語の会議・講義録音には：</strong>1人の講義なら日本語特化モデルも比較候補です。複数話者を分ける会議は、話者認識対応の「Qwen3-ASR 1.7B」または「Large v3 Turbo」を選びます。</div>
   </div>
 
   <hr class="divider">
@@ -795,7 +798,7 @@
         <tr>
           <td>Large v3 Turbo ✓（現在選択中）</td>
           <td><span class="tag tag-select">モデル</span></td>
-          <td>WhisperKitエンジンの最高精度モデル。日本語を含む多言語対応。現在このMacに設定されているデフォルトモデルです（チェックマーク表示）。速度と精度のバランスが良い。</td>
+          <td>WhisperKitエンジンの高精度モデル。日本語を含む多言語対応。現在このMacに設定されているデフォルトモデルです（チェックマーク表示）。速度と精度のバランスが良い。</td>
         </tr>
         <tr>
           <td>Parakeet v3（494MB）</td>
@@ -804,7 +807,7 @@
         </tr>
       </tbody>
     </table>
-    <div class="note">📌 <strong>モデル選択の目安：</strong><br>日本語のみ → Japanese（言語特化）<br>日英混在 → Large v3 Turbo<br>英語のみ → Parakeet v3（最速）</div>
+    <div class="note">📌 <strong>モデル選択の目安：</strong><br>日本語・1人の講義 → Japanese（言語特化）も比較<br>日本語・複数話者 → Qwen3-ASR 1.7B または Large v3 Turbo<br>日英混在 → Large v3 Turbo<br>英語のみ → Parakeet v3</div>
   </div>
 
   <a href="#top" class="back-top">▲ 目次へ戻る</a>
@@ -868,8 +871,13 @@
 <section class="chapter" id="ch6">
   <div class="ch-eyebrow">CHAPTER 06 ── HISTORY</div>
   <h2>文字起こし履歴・削除済み</h2>
-  <p class="chapter-lead">過去に行った文字起こしの一覧と、削除したアイテムを管理します。</p>
-  <div class="note">🆕 <strong>14.8：</strong>ディクテーション履歴を右クリックし、保存されている録音音声を書き出せるようになりました。</div>
+  <p class="chapter-lead">過去に行った文字起こしの一覧、フォルダ、削除したアイテムを管理します。</p>
+  <div class="feature-grid">
+    <div class="feature-card"><h3>Folders</h3><p>15系では文字起こしをフォルダ・サブフォルダで整理できます。ドラッグ＆ドロップとキーボード操作に対応します。</p></div>
+    <div class="feature-card"><h3>検索を強化</h3><p>元のファイル名でも検索でき、引用符で囲むと完全一致の語句を探せます。</p></div>
+    <div class="feature-card"><h3>複数画面を閉じる</h3><p>複数の文字起こしを開いているとき、Open欄の「Close All」でまとめて閉じられます。</p></div>
+    <div class="feature-card"><h3>ディクテーション音声</h3><p>履歴を右クリックすると、保存されている録音音声を書き出せます。</p></div>
+  </div>
 
   <div class="screen-block">
     <div class="screen-label">17 — 最近削除したもの</div>
@@ -1312,6 +1320,7 @@
   <div class="ch-eyebrow">CHAPTER 12 ── SETTINGS: WATCHED FOLDERS</div>
   <h2>設定 — Watched Folders（監視フォルダ）</h2>
   <p class="chapter-lead">指定したフォルダに音声ファイルを入れると自動で文字起こしする機能です。</p>
+  <div class="note">🆕 <strong>15.3：</strong>コピー途中のファイルが完成するまで待ち、iCloud上にしかないファイルを自動取得します。サブフォルダ監視がONなら、新しく追加されたサブフォルダ内のファイルも処理します。</div>
 
   <div class="screen-block">
     <div class="screen-label">S03 — 設定：Watched Folders</div>
@@ -1365,11 +1374,12 @@
 <section class="chapter" id="ch13">
   <div class="ch-eyebrow">CHAPTER 13 ── SETTINGS: RECORD MEETINGS</div>
   <h2>設定 — Record Meetings（会議録音）</h2>
+  <p class="chapter-lead">15系では、録音しながら話者識別付きの文字起こしを表示できます。15.2.1以降はLive Meeting Transcriptionが初期状態でONです。</p>
 
   <div class="screen-block">
-    <div class="screen-label">S04 — 設定：Record Meetings</div>
-    <h3>会議録音設定画面</h3>
-    <img class="screen-img" src="./screenshots/s04_settings_record_meetings.jpg" alt="設定 Record Meetings">
+    <div class="screen-label">15.4 — 設定：Record Meetings</div>
+    <h3>会議録音設定画面（15.4実機）</h3>
+    <img class="screen-img" src="./screenshots/v15_record_meetings.png" alt="MacWhisper 15.4 設定 Record Meetings">
     <table class="items-table">
       <thead><tr><th>項目名</th><th>種別</th><th>説明</th></tr></thead>
       <tbody>
@@ -1379,9 +1389,14 @@
           <td>「この機能はベータ版です」という注意書き。動作が不安定な場合があります。</td>
         </tr>
         <tr>
+          <td>Live Meeting Transcription</td>
+          <td><span class="tag tag-toggle">トグル</span></td>
+          <td>録音中に別ウィンドウで文字起こしを表示します。話者識別に対応し、Parakeet、WhisperKit、Qwen3-ASRなどのライブ対応モデルが必要です。</td>
+        </tr>
+        <tr>
           <td>System Audio Recording Permissions（システム音声録音権限）</td>
           <td><span class="tag tag-info">セクション</span></td>
-          <td>Macのシステム音声をキャプチャするための権限設定です。初回は許可が必要です。</td>
+          <td>Macのシステム音声をキャプチャするための権限設定です。macOS 26以降の15.4ではCoreAudioを使うため、「システムオーディオ録音」権限だけで利用でき、画面収録権限は不要です。</td>
         </tr>
         <tr>
           <td>Grant Audio Recording Permission（音声録音権限を付与）</td>
@@ -1390,6 +1405,8 @@
         </tr>
       </tbody>
     </table>
+    <div class="note">🎙️ <strong>15.4：</strong>CoreAudioへの変更によりエコーキャンセルが全利用者で有効になりました。自動会議検出がOFFでも、ホーム画面のショートカットから手動で録音を始められます。</div>
+    <div class="note">🌏 <strong>15.3：</strong>Tencent MeetingとVooV Meetingの検出にも対応しました。</div>
     <div class="note">⚠️ <strong>初回設定で必ず行うこと：</strong>このボタンを押してシステム権限を付与してください。付与しないとZoom・Teams録音が使えません。</div>
   </div>
 
@@ -1558,11 +1575,18 @@
   <div class="ch-eyebrow">CHAPTER 17 ── SETTINGS: LOCAL MODELS</div>
   <h2>設定 — Local Models（ローカルモデル）</h2>
   <p class="chapter-lead">Macにダウンロードして使うオフラインAIモデルを管理します。インターネット不要で動作します。</p>
+  <div class="update-banner">
+    <h3>15系の新モデル：Qwen3-ASR 1.7B</h3>
+    <p>30言語に対応し、通常のファイル、ライブ会議、Live Captionsで利用できます。Pro機能で約1.77GBです。15.4では対応するM1 Macにも広がりましたが、利用可否はMacとmacOSの条件によって変わります。</p>
+  </div>
+  <div class="note">🎯 <strong>2時間程度の日本語・話者認識：</strong>精度重視なら「Qwen3-ASR 1.7B＋Nemotron」、速度と実績のバランスなら「Large v3 Turbo＋Nemotron」が第一候補です。最初の10分だけ両方で試し、固有名詞と話者分離が良い方を選ぶと失敗を減らせます。</div>
+  <div class="note">💰 <strong>API課金をしない場合：</strong>この2つはMac内で処理するローカルモデルなので、追加のAPI料金はかかりません。今回のような長時間音声にはこの方法が向いています。</div>
+  <div class="note">👥 <strong>選ぶときの目印：</strong>モデル一覧で「Speaker Recognition」と表示されるものを選びます。15.4実機の「Japanese（日本語特化）」にはこの表示がないため、話者認識が必要な今回の第一候補にはしません。</div>
 
   <div class="screen-block">
-    <div class="screen-label">S08 — 設定：Local Models</div>
-    <h3>ローカルモデル管理画面</h3>
-    <img class="screen-img" src="./screenshots/s08_settings_local_models.jpg" alt="設定 Local Models">
+    <div class="screen-label">15.4 — 設定：Local Models</div>
+    <h3>ローカルモデル管理画面（15.4実機）</h3>
+    <img class="screen-img" src="./screenshots/v15_local_models.png" alt="MacWhisper 15.4 設定 Local Models">
     <table class="items-table">
       <thead><tr><th>項目名</th><th>種別</th><th>説明</th></tr></thead>
       <tbody>
@@ -1584,7 +1608,7 @@
         <tr>
           <td>Japanese（日本語特化） 1.52GB</td>
           <td><span class="tag tag-info">モデル</span></td>
-          <td>日本語専用のWhisperモデル。ダウンロード済み。日本語会議・講義録音に特に有効。</td>
+          <td>日本語専用のWhisperモデル。ダウンロード済み。ただし15.4実機では「Speaker Recognition」表示がないため、話者認識が必要な音声では対応表示のあるモデルを選びます。</td>
         </tr>
         <tr>
           <td>日本語 ja-JP（Apple Speech）</td>
@@ -1607,9 +1631,19 @@
           <td>より高精度な英語モデルの大きいバージョン。</td>
         </tr>
         <tr>
-          <td>カテゴリフィルター（Apple Speech / Language Specific / WhisperKit）</td>
+          <td>Qwen3-ASR 1.7B（約1.77GB）</td>
+          <td><span class="tag tag-select">Pro・ダウンロード可</span></td>
+          <td>精度重視の多言語モデル。話者識別とライブ文字起こしに対応し、15.4の実機ではRecommended Modelsに表示されます。</td>
+        </tr>
+        <tr>
+          <td>話者認識モデル</td>
+          <td><span class="tag tag-select">選択</span></td>
+          <td>15.3からNemotronまたはPyannoteを選べます。Nemotronは高精度ですが、1つの録音につき最大8話者です。</td>
+        </tr>
+        <tr>
+          <td>カテゴリフィルター（Apple Speech / Language Specific / WhisperKit / Parakeet / Qwen3-ASR）</td>
           <td><span class="tag tag-btn">タブ</span></td>
-          <td>モデルをカテゴリ別に絞り込みます。WhisperKitはOpenAI Whisperベース、Apple SpeechはApple独自のAIです。</td>
+          <td>モデルをカテゴリ別に絞り込みます。Pro専用、話者識別対応、上級者向けでも絞り込めます。</td>
         </tr>
       </tbody>
     </table>
@@ -1625,15 +1659,15 @@
 <section class="chapter" id="ch18">
   <div class="ch-eyebrow">CHAPTER 18 ── SETTINGS: CLOUD MODELS</div>
   <h2>設定 — Cloud Models（クラウドモデル）</h2>
-  <p class="chapter-lead">インターネット経由でクラウドのAIサービスを使って文字起こしします。14.8.1の実機では、OpenAIを含む18種類の接続先を確認できます。</p>
+  <p class="chapter-lead">インターネット経由でクラウドのAIサービスを使って文字起こしします。15.4の実機では、OpenAIを含む18種類の接続先を確認できます。</p>
 
   <div class="screen-block">
-    <div class="screen-label">S09 — 設定：Cloud Models</div>
-    <h3>クラウドモデル設定画面（旧版の画面例）</h3>
-    <img class="screen-img" src="./screenshots/s09_settings_cloud_models.jpg" alt="設定 Cloud Models">
-    <p class="source-note">この画像は13.21.4で撮影したものです。現在は下記のサービスが追加され、選択肢が増えています。</p>
-    <div class="provider-list" aria-label="14.8.1で確認したクラウド文字起こしサービス">
-      <span>OpenAI</span><span>Groq</span><span>Deepgram</span><span>Gladia</span><span>AssemblyAI</span><span>Gemini</span><span>Speechmatics</span><span>ElevenLabs</span><span>Rev AI</span><span>Mistral</span><span>xAI</span><span>Corti</span><span>Cartesia</span><span>Cohere</span><span>Avalon</span><span>OpenRouter</span><span>Volcengine</span><span>Custom</span>
+    <div class="screen-label">15.4 — 設定：Cloud Models</div>
+    <h3>クラウドモデル設定画面（15.4実機）</h3>
+    <img class="screen-img" src="./screenshots/v15_cloud_models.png" alt="MacWhisper 15.4 設定 Cloud Models">
+    <p class="source-note">15.4の実機画面です。API課金をしない場合は、この画面のサービスを設定せずLocal Modelsを使います。</p>
+    <div class="provider-list" aria-label="15.4で確認したクラウド文字起こしサービス">
+      <span>OpenAI</span><span>Groq</span><span>Deepgram</span><span>Gladia</span><span>AssemblyAI</span><span>Gemini</span><span>Speechmatics</span><span>ElevenLabs</span><span>Rev AI</span><span>Mistral</span><span>SpaceXAI</span><span>Corti</span><span>Cartesia</span><span>Cohere</span><span>Avalon</span><span>OpenRouter</span><span>Volcengine</span><span>Custom</span>
     </div>
     <table class="items-table">
       <thead><tr><th>項目名</th><th>種別</th><th>説明</th></tr></thead>
@@ -1652,6 +1686,11 @@
           <td>Gemini（3.5 Transcribe）</td>
           <td><span class="tag tag-select">選択肢</span></td>
           <td>14.8.1で追加。日本語を含む多言語の自動判定、話者区別、単語タイムスタンプに対応します。Google AI StudioのAPIキーが必要です。</td>
+        </tr>
+        <tr>
+          <td>SpaceXAI（Grok Voice Transcribe 2）</td>
+          <td><span class="tag tag-select">選択肢</span></td>
+          <td>15.4で追加されたクラウド文字起こしモデルです。以前の「xAI」表記は15.3から「SpaceXAI」に変更されました。</td>
         </tr>
         <tr>
           <td>Groq</td>
@@ -1675,7 +1714,10 @@
         </tr>
       </tbody>
     </table>
+    <div class="note">⏱️ <strong>Geminiで長時間音声を扱う場合：</strong>Google公式仕様では、話者認識または単語タイムスタンプを使うファイル処理は1回30分までです。2時間音声では分割が必要になる可能性があるため、長時間の一括処理はローカルモデルを優先してください。</div>
+    <div class="note">💳 <strong>月額契約とAPIは別：</strong>Gemini、ChatGPT、Claudeなどの一般向け有料プランは、通常API利用料を含みません。MacWhisperから使うには各社のAPIキーとAPI側の課金設定が必要です。</div>
     <div class="note">💡 <strong>ローカル vs クラウドの使い分け：</strong>ローカルモデル（Large v3 Turbo等）は音声をMac内で処理できます。クラウドモデルは音声を各サービスへ送信し、多くの場合APIキーと利用料金が必要です。機密性・費用・必要な機能を比べて選んでください。</div>
+    <p class="source-note">出典：<a href="https://ai.google.dev/gemini-api/docs/models/gemini-3.5-transcribe?hl=ja">Google公式「Gemini 3.5 Transcribe」</a>、<a href="https://docs.macwhisper.com/article/58-setting-up-ai-providers-in-macwhisper">MacWhisper公式「Setting Up AI Providers」</a></p>
   </div>
 
   <a href="#top" class="back-top">▲ 目次へ戻る</a>
@@ -1867,8 +1909,9 @@
 
   <div class="screen-block">
     <div class="screen-label">S14 — 設定：AI Services</div>
-    <h3>AIサービス設定画面</h3>
+    <h3>AIサービス設定画面（画像は旧版）</h3>
     <img class="screen-img" src="./screenshots/s14_settings_ai_services.jpg" alt="設定 AI Services">
+    <p class="source-note">15.2.1以降は、保存したAIサービスに「Test Connection」が表示され、APIキーや接続先が正しく応答するか確認できます。</p>
     <table class="items-table">
       <thead><tr><th>項目名</th><th>種別</th><th>説明</th></tr></thead>
       <tbody>
@@ -1876,6 +1919,11 @@
           <td>Add another service（別のサービスを追加）</td>
           <td><span class="tag tag-btn">ボタン</span></td>
           <td>AIチャット・要約に使う外部サービスを追加できます。</td>
+        </tr>
+        <tr>
+          <td>Test Connection（接続テスト）</td>
+          <td><span class="tag tag-btn">ボタン</span></td>
+          <td>登録したAIサービスが正しく設定され、応答できる状態かを確認します。失敗した場合はAPIキー、利用枠、モデル名を見直してください。</td>
         </tr>
         <tr>
           <td>Google（Gemini）</td>
@@ -1895,7 +1943,7 @@
         <tr>
           <td>OpenAI（ChatGPT）</td>
           <td><span class="tag tag-select">選択肢</span></td>
-          <td>ChatGPT（GPT-4等）のAPIを使います。APIキーが必要。</td>
+          <td>OpenAI APIの対応モデルを使います。APIキーが必要で、ChatGPTの契約とは料金体系が別です。</td>
         </tr>
         <tr>
           <td>OpenRouter</td>
@@ -1913,9 +1961,9 @@
           <td>Microsoft Azure経由のOpenAI APIを使います。</td>
         </tr>
         <tr>
-          <td>xAI</td>
+          <td>SpaceXAI（旧xAI）</td>
           <td><span class="tag tag-select">選択肢</span></td>
-          <td>xAI（Grokモデル）のAPIを使います。</td>
+          <td>GrokモデルのAPIを使います。15.3からサービス名の表示がSpaceXAIへ更新されました。</td>
         </tr>
         <tr>
           <td>Hugging Face</td>
@@ -1943,12 +1991,13 @@
           <td>デフォルトはAppleのオンデバイスAI（Apple Intelligence）を使用します。無料・オフラインで動作します。</td>
         </tr>
         <tr>
-          <td>claude-sonnet-4-6（設定済み）</td>
+          <td>保存済みAIサービス</td>
           <td><span class="tag tag-info">設定済み</span></td>
-          <td>Claude Sonnet 4.6がAPIキーとともに設定されています。これを使うとClaudeによる要約・AIチャットが利用できます。</td>
+          <td>登録したサービスとモデルが表示されます。利用可能なモデル名は各社の更新で変わるため、Test Connectionで動作を確認してください。</td>
         </tr>
       </tbody>
     </table>
+    <div class="note">💰 <strong>API課金をしない使い方：</strong>MacWhisper内でGemini・ChatGPT・Claudeへ直接接続はせず、文字起こしはLocal Modelsで完了させます。その後、完成した文章を契約中の各AIアプリへ手動で貼り付ければ、要約・議事録化・文章整理には活用できます。MacWhisper内だけで処理したい場合はApple Foundation Models、LM Studio、Ollamaなどのローカル手段を使います。</div>
   </div>
 
   <a href="#top" class="back-top">▲ 目次へ戻る</a>
@@ -1963,17 +2012,17 @@
   <h2>設定 — About（バージョン情報）</h2>
 
   <div class="screen-block">
-    <div class="screen-label">S15 — 設定：About</div>
-    <h3>アプリのバージョン情報・開発者情報（画像は旧版）</h3>
-    <img class="screen-img" src="./screenshots/s15_settings_about.jpg" alt="設定 About">
-    <p class="source-note">画像は13.21.4で撮影した画面です。このガイドの更新時に確認した最新版は14.8.1（1481）です。</p>
+    <div class="screen-label">15.4 — 設定：About</div>
+    <h3>アプリのバージョン情報・開発者情報（15.4実機）</h3>
+    <img class="screen-img" src="./screenshots/v15_about.png" alt="MacWhisper 15.4 設定 About">
+    <p class="source-note">2026年10月9日に撮影した15.4（1540）の実機画面です。</p>
     <table class="items-table">
       <thead><tr><th>項目名</th><th>種別</th><th>説明</th></tr></thead>
       <tbody>
         <tr>
-          <td>MacWhisper Pro 14.8.1 (1481)</td>
+          <td>MacWhisper Pro 15.4 (1540)</td>
           <td><span class="tag tag-info">バージョン</span></td>
-          <td>2026年9月11日に実機で確認したバージョンです。画面に表示される番号は、今後のアップデートで変わります。</td>
+          <td>2026年10月9日に実機と公式更新フィードで確認したバージョンです。15系はmacOS 15以上が必要です。</td>
         </tr>
         <tr>
           <td>Made by Jordi Bruin, Ian Dundas and friends</td>
@@ -2013,10 +2062,10 @@
 <footer>
   <div class="wrap">
     <div class="stamp">声 → 文字 → 知識</div>
-    <p>MacWhisper Pro 完全操作ガイド ／ バージョン 14.8.1 (1481)<br>
-    初版：2026年6月 ／ 更新：2026年9月 ／ MacBook Air M5</p>
+    <p>MacWhisper Pro 完全操作ガイド ／ バージョン 15.4 (1540)<br>
+    初版：2026年6月 ／ 更新：2026年10月 ／ MacBook Air M5</p>
     <p style="margin-top:12px; font-size:.76rem;">
-      既存の実機画面39点は13.21.4で撮影し、14.8.1で変わった内容は実機確認と公式資料をもとに更新しています。<br>
+      既存の実機画面39点は13.21.4で撮影し、15.4で変わった内容は実機確認と公式資料をもとに更新しています。<br>
       最新版の情報は <a href="https://macwhisper-site.vercel.app/release_notes.html" style="color:var(--vermillion)">MacWhisper公式リリースノート</a> でご確認ください。
     </p>
   </div>
