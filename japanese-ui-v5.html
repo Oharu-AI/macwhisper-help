@@ -1,0 +1,419 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="MacWhisper 15.5を元にした非公式日本語UI試作版v5の操作説明。実機スクリーンショット、正規版との違い、残る英語、確認範囲、公式出典を掲載。"><title>MacWhisper非公式日本語UI試作版v5対応 — 日本語操作ガイド</title><style>
+  :root {
+    --ink: #1a1a17;
+    --paper: #f7f4ec;
+    --paper-deep: #efe9db;
+    --vermillion: #c4452f;
+    --sumi: #2c2a26;
+    --gold: #a8821f;
+    --line: #d8d0bf;
+    --muted: #565146;
+    --screen-bg: #1e1e1e;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ink: #f0ebe0;
+      --paper: #1a1a17;
+      --paper-deep: #242220;
+      --vermillion: #ff6b5a;
+      --sumi: #0d0c0a;
+      --gold: #d4af37;
+      --line: #3d3a34;
+      --muted: #c9bfb3;
+      --screen-bg: #111;
+    }
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Hiragino Mincho ProN", "Yu Mincho", serif;
+    line-height: 1.85;
+    -webkit-font-smoothing: antialiased;
+    letter-spacing: .02em;
+  }
+  .wrap { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--sumi);
+    color: #fff;
+    padding: 52px 0 44px;
+  }
+  .hero-mark {
+    font-family: "Hiragino Kaku Gothic ProN", sans-serif;
+    font-size: .72rem; letter-spacing: .4em;
+    color: var(--vermillion); font-weight: 700;
+    text-transform: uppercase; margin-bottom: 18px;
+  }
+  .hero h1 {
+    font-size: clamp(1.8rem, 5vw, 3rem);
+    font-weight: 600; line-height: 1.3;
+    color: #fff; margin-bottom: 10px;
+  }
+  .hero h1 em { color: var(--gold); font-style: normal; }
+  .hero .sub {
+    font-family: "Hiragino Kaku Gothic ProN", sans-serif;
+    font-size: .88rem; color: #a09880; margin-top: 14px;
+  }
+
+  /* ── TOC ── */
+  .toc-wrap {
+    background: var(--paper-deep);
+    border-bottom: 1px solid var(--line);
+    padding: 28px 0;
+  }
+  .toc-title {
+    font-family: "Hiragino Kaku Gothic ProN", sans-serif;
+    font-size: .72rem; letter-spacing: .3em;
+    color: var(--vermillion); font-weight: 700;
+    margin-bottom: 14px;
+  }
+  .toc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 6px 16px;
+  }
+  .toc-grid a {
+    font-family: "Hiragino Kaku Gothic ProN", sans-serif;
+    font-size: .84rem; color: var(--ink);
+    text-decoration: none;
+    padding: 4px 0;
+    border-bottom: 1px solid transparent;
+  }
+  .toc-grid a:hover { color: var(--vermillion); border-bottom-color: var(--vermillion); }
+  .toc-num { color: var(--gold); font-size: .72rem; margin-right: 6px; }
+
+  /* ── CHAPTER HEADER ── */
+  .chapter {
+    padding: 56px 0 0;
+    border-top: 3px solid var(--ink);
+    margin-top: 56px;
+  }
+  .chapter:first-of-type { margin-top: 0; border-top: none; padding-top: 48px; }
+  .ch-eyebrow {
+    font-family: "Hiragino Kaku Gothic ProN", sans-serif;
+    font-size: .72rem; letter-spacing: .36em;
+    color: var(--vermillion); font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .chapter h2 {
+    font-size: clamp(1.5rem, 4vw, 2.2rem);
+    font-weight: 600; line-height: 1.3;
+    margin-bottom: 14px;
+  }
+  .chapter-lead {
+    font-size: 1rem; color: var(--muted);
+    max-width: 640px; margin-bottom: 32px;
+    font-family: "Hiragino Kaku Gothic ProN", sans-serif;
+  }
+
+  /* ── SCREEN BLOCK ── */
+  .screen-block {
+    margin-bottom: 56px;
+  }
+  .screen-label {
+    font-family: "Hiragino Kaku Gothic ProN", sans-serif;
+    font-size: .76rem; font-weight: 700;
+    letter-spacing: .2em; color: var(--gold);
+    margin-bottom: 10px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .screen-label::before {
+    content: "SCREEN";
+    font-size: .62rem; letter-spacing: .3em;
+    color: var(--vermillion); border: 1px solid var(--vermillion);
+    padding: 1px 6px; border-radius: 2px;
+  }
+  .screen-block h3 {
+    font-size: 1.25rem; font-weight: 600;
+    color: var(--ink); margin-bottom: 16px;
+  }
+  .screen-img {
+    width: 100%;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    display: block;
+    background: var(--screen-bg);
+    margin-bottom: 20px;
+    box-shadow: 0 4px 16px rgba(0,0,0,.12);
+  }
+  /* ── ITEM TABLE ── */
+  .items-table {
+    width: 100%; border-collapse: collapse;
+    font-size: .93rem; margin-bottom: 10px;
+  }
+  .items-table thead th {
+    font-family: "Hiragino Kaku Gothic ProN", sans-serif;
+    font-size: .7rem; letter-spacing: .16em;
+    color: var(--vermillion); text-transform: uppercase;
+    border-bottom: 2px solid var(--ink);
+    padding: 8px 10px; text-align: left; font-weight: 700;
+  }
+  .items-table tbody tr:nth-child(even) {
+    background: var(--paper-deep);
+  }
+  .items-table td {
+    padding: 11px 10px;
+    border-bottom: 1px solid var(--line);
+    vertical-align: top; color: var(--ink);
+    line-height: 1.75;
+  }
+  .items-table td:first-child {
+    font-family: "Hiragino Kaku Gothic ProN", sans-serif;
+    font-weight: 700; font-size: .88rem;
+    white-space: nowrap; color: var(--sumi);
+    min-width: 140px;
+  }
+  @media (prefers-color-scheme: dark) {
+    .items-table td:first-child { color: #e8dfc8; }
+  }
+  .tag {
+    display: inline-block;
+    font-family: "Hiragino Kaku Gothic ProN", sans-serif;
+    font-size: .68rem; font-weight: 700;
+    padding: 1px 7px; border-radius: 3px;
+    margin-right: 4px; vertical-align: middle;
+  }
+  .tag-btn { background: var(--vermillion); color: #fff; }
+  .tag-toggle { background: #4a90d9; color: #fff; }
+  .tag-select { background: var(--gold); color: #fff; }
+  .tag-info { background: var(--muted); color: #fff; }
+  .tag-pro { background: var(--sumi); color: #f0c869; }
+
+  /* ── NOTE BOX ── */
+  .note {
+    background: var(--paper-deep);
+    border-left: 4px solid var(--gold);
+    padding: 14px 18px; margin-top: 14px;
+    font-family: "Hiragino Kaku Gothic ProN", sans-serif;
+    font-size: .87rem; color: var(--ink);
+    line-height: 1.8; border-radius: 0 4px 4px 0;
+  }
+  .note strong { color: var(--vermillion); }
+
+  /* ── VERSION UPDATE ── */
+  .update-banner {
+    border: 1px solid var(--gold);
+    background: linear-gradient(135deg, var(--paper-deep), var(--paper));
+    padding: 22px;
+    margin: 8px 0 28px;
+    border-radius: 8px;
+  }
+  .update-banner h3 { margin-bottom: 8px; }
+  .update-banner p { font-family: "Hiragino Kaku Gothic ProN", sans-serif; font-size: .9rem; }
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin: 18px 0 24px;
+  }
+  .feature-card {
+    border: 1px solid var(--line);
+    background: var(--paper-deep);
+    border-radius: 6px;
+    padding: 15px 16px;
+    font-family: "Hiragino Kaku Gothic ProN", sans-serif;
+    font-size: .88rem;
+  }
+  .feature-card strong { display: block; color: var(--vermillion); margin-bottom: 4px; }
+  .source-note {
+    display: block;
+    margin: -10px 0 20px;
+    font-family: "Hiragino Kaku Gothic ProN", sans-serif;
+    font-size: .74rem;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+  .source-note a { color: var(--vermillion); }
+  .provider-list {
+    display: flex; flex-wrap: wrap; gap: 7px;
+    margin: 12px 0 18px;
+  }
+  .provider-list span {
+    border: 1px solid var(--line);
+    background: var(--paper-deep);
+    border-radius: 999px;
+    padding: 3px 10px;
+    font-family: "Hiragino Kaku Gothic ProN", sans-serif;
+    font-size: .78rem;
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    border: none; border-top: 1px dashed var(--line);
+    margin: 36px 0;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 48px 0 64px;
+    text-align: center;
+    border-top: 1px solid var(--line);
+    margin-top: 48px;
+  }
+  footer .stamp {
+    font-family: "Hiragino Mincho ProN", serif;
+    font-size: 1.1rem; color: var(--vermillion);
+    border: 2px solid var(--vermillion);
+    display: inline-block; padding: 8px 18px;
+    border-radius: 5px; transform: rotate(-3deg);
+    margin-bottom: 20px; letter-spacing: .1em;
+  }
+  footer p {
+    font-size: .82rem; color: var(--muted);
+    font-family: "Hiragino Kaku Gothic ProN", sans-serif;
+    line-height: 1.9;
+  }
+
+  /* ── BACK TO TOP ── */
+  .back-top {
+    display: block;
+    font-family: "Hiragino Kaku Gothic ProN", sans-serif;
+    font-size: .8rem; color: var(--muted);
+    text-align: right; margin-top: 8px;
+    text-decoration: none;
+  }
+  .back-top:hover { color: var(--vermillion); }
+
+  @media (max-width: 640px) {
+    .items-table td:first-child { min-width: 100px; font-size: .82rem; }
+    .items-table td { padding: 9px 8px; font-size: .88rem; }
+    .items-table thead th { font-size: .65rem; }
+    .feature-grid { grid-template-columns: 1fr; }
+  }
+
+body{font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;letter-spacing:.01em} .wrap{max-width:1080px} .hero{background:#222a2e} .hero .sub{color:#d5d5c9} .hero h1{font-family:"Hiragino Mincho ProN",serif} .hero-mark{color:#f2b880}.hero a{color:#fff}.eyebrow{color:var(--vermillion);font-size:.8rem;letter-spacing:.12em;font-weight:700}.chapter h2{font-size:clamp(1.4rem,4vw,2rem);margin-bottom:24px}.chapter h3{font-size:1.15rem;margin:30px 0 12px}.chapter p{margin:14px 0}.chapter li{margin:9px 0}.chapter ul,.chapter ol{padding-left:1.6em}.steps{background:var(--paper-deep);padding:20px 24px 20px 46px!important;border-radius:8px}.notice{background:#fff2e4;color:#3f2919;border-left:5px solid #b86122;padding:20px;margin:24px 0}.notice p{margin-bottom:0}.tag{background:var(--paper-deep);border:1px solid var(--line);padding:3px 7px;border-radius:4px;font-size:.82rem}.evidence{font-size:.83rem;color:var(--muted);border-left:3px solid var(--gold);padding:8px 14px}.shot{margin:26px 0;background:var(--paper-deep);border:1px solid var(--line);border-radius:10px;overflow:hidden}.shot a{display:block}.shot img{display:block;width:100%;height:auto;max-height:680px;object-fit:contain;background:#fff}.shot figcaption{padding:12px 18px;font-size:.8rem;color:var(--muted)}.table-scroll{overflow-x:auto;margin:20px 0}table{width:100%;min-width:510px}td,th{vertical-align:top}.toc-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.toc-grid a{font-size:.88rem}summary{cursor:pointer;font-weight:700;padding:15px 0}details{border-bottom:1px solid var(--line)}details p{padding:0 16px 14px}a:focus-visible,summary:focus-visible{outline:3px solid var(--vermillion);outline-offset:4px}a{overflow-wrap:anywhere}.page-tools{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}.page-tools a,.page-tools button{font:inherit;background:var(--paper-deep);color:var(--ink);border:1px solid var(--line);border-radius:6px;padding:9px 14px;text-decoration:none;cursor:pointer}.toplink{position:fixed;bottom:18px;right:18px;background:var(--sumi);color:#fff;padding:8px 14px;border-radius:22px;text-decoration:none;font-size:.8rem;box-shadow:0 2px 10px #0003}.filter{width:100%;font:inherit;padding:12px 15px;border:1px solid var(--line);border-radius:6px;background:var(--paper);color:var(--ink);margin:12px 0 18px}.filter-label{font-size:.85rem;font-weight:700}.empty{font-size:.85rem}.page-footer{padding:50px 0;margin-top:60px;border-top:1px solid var(--line);font-size:.85rem;color:var(--muted)}@media(max-width:640px){.toc-grid{grid-template-columns:1fr}.hero{padding:32px 0}.wrap{padding:0 18px}.chapter{margin-top:40px;padding-top:32px}.shot img{max-height:none}.toplink{bottom:10px;right:10px}}@media print{.hero{background:white;color:black}.hero h1,.hero .sub,.hero-mark{color:black}.toc-wrap,.page-tools,.toplink,.filter-label,.filter{display:none}.shot img{max-height:500px}.chapter{break-before:auto}.shot,table{break-inside:avoid}a{color:inherit}details p{display:block}}
+[hidden]{display:none!important}</style></head><body><header class="hero" id="top"><div class="wrap"><div class="hero-mark">非公式日本語UI試作版v5対応</div><h1>日本語の画面で読む<br><em>MacWhisper 操作ガイド</em></h1><p class="sub">対象：MacWhisper 15.5（1550）／非公式ローカル署名版<br>画面撮影・内容確認：2026年10月12日</p><p class="sub">正規版との違いを確認してから、目的の操作へ進んでください。</p><div class="page-tools"><a href="#first">正規版との違い</a><a href="#file">ファイルから文字起こし</a><a href="macwhisper-guide.html">従来の詳細ガイド</a><button onclick="window.print()">印刷・PDF保存</button></div></div></header><nav class="toc-wrap" aria-label="目次"><div class="wrap"><p class="toc-title">やりたいことから探す</p><label class="filter-label" for="toc-filter">目次を絞り込む</label><input class="filter" id="toc-filter" type="search" placeholder="例：話者、書き出す、英語、VAD"><div class="toc-grid"><a href="#first"><span class="toc-num">01</span>最初に：正規版と試作版の違い</a><a href="#start"><span class="toc-num">02</span>日本語版を開き、画面の場所を覚える</a><a href="#file"><span class="toc-num">03</span>音声ファイルを文字起こしする</a><a href="#models"><span class="toc-num">04</span>ローカルモデルと話者を選ぶ</a><a href="#export"><span class="toc-num">05</span>テキスト・字幕を書き出す</a><a href="#watch"><span class="toc-num">06</span>監視フォルダで自動処理する</a><a href="#meetings"><span class="toc-num">07</span>会議の録音・音声入力を設定する</a><a href="#advanced"><span class="toc-num">08</span>詳細設定：表示・精度・メモリを調整する</a><a href="#vad"><span class="toc-num">09</span>VADと文脈設定を理解する</a><a href="#cleanup"><span class="toc-num">10</span>誤認識を検索・置換し、不要な区間を除く</a><a href="#ai"><span class="toc-num">11</span>AIサービス・日本語プロンプト・翻訳</a><a href="#english"><span class="toc-num">12</span>英語が残る場所の早見表</a><a href="#status"><span class="toc-num">13</span>日本語化の範囲・困ったとき・参照先</a></div><p class="empty" id="no-results" hidden>該当する目次がありません。短い言葉で検索してください。</p></div></nav><main class="wrap"><section class="chapter" id="first"><p class="eyebrow">操作ガイド 01</p><h2>最初に：正規版と試作版の違い</h2>
+<p class="chapter-lead">このページは、MacWhisper 15.5に日本語翻訳を追加した<strong>非公式日本語UI試作版v5</strong>の操作ガイドです。開発元が提供する正式な日本語版ではありません。「v5」は日本語化の試作番号で、MacWhisper本体の版番号は15.5（1550）です。</p>
+<div class="notice"><strong>重要な録音には正規版を使ってください。</strong><p>試作版は主要画面の日本語表示を確認した段階です。録音、文字起こし、外部送信の動作試験は未実施です。動作検証が済むまで、失えない録音や本番の会議は正規版で扱ってください。</p></div>
+<div class="table-scroll"><table><thead><tr><th>比較する点</th><th>正規版</th><th>非公式試作版v5</th></tr></thead><tbody>
+<tr><td>提供元・位置付け</td><td>開発元の配布版</td><td>別コピーに翻訳を追加したローカル署名版</td></tr>
+<tr><td>日本語表示</td><td>この環境では英語表示になる場合があります</td><td>主要操作を日本語化。一部は英語のままです</td></tr>
+<tr><td>正規版への変更</td><td>インストール済みの本体は変更していません</td><td>アプリのコピーに翻訳リソースを追加。実行コードの直接改造はしていません</td></tr>
+<tr><td>設定・履歴</td><td colspan="2">同じアプリ識別子を使い、完全分離していません。表示名の変更が正規版にも影響する可能性があります</td></tr>
+<tr><td>検証</td><td>試作版の表示確認と混同しません</td><td>主要表示・同じv5の再起動を確認。全機能の動作保証はありません</td></tr>
+<tr><td>更新後</td><td>通常の更新対象</td><td>自動更新後も日本語化が残るとは保証できません</td></tr>
+</tbody></table></div>
+<p class="evidence"><b>ローカルの作業記録</b>：2026年10月12日の翻訳作業の引き継ぎ、画面監査、表示名変更の記録を読み取り確認。ここに挙げた試作版固有の説明は公式仕様ではありません。</p>
+<h3>どこまで確認したか</h3>
+<ul><li>翻訳の自動検査10件とローカル署名の検証は合格した記録があります。</li><li>主要画面の表示と、同じv5の再起動を確認した記録があります。一部の画面は画像でも文字切れがないことを確認しています。</li><li>全画面、全選択肢、全警告の確認は未完了です。署名検証の合格は、全機能の安全性や動作の保証ではありません。</li></ul>
+<h3>この説明書の根拠の読み方</h3>
+<p><span class="tag">公式ヘルプ</span> は機能の基本説明、<span class="tag">公式更新履歴</span> は15系の追加・変更、<span class="tag">実機の表示確認</span> はv5で見えたラベル・説明を示します。画面のスイッチの状態は撮影時の設定で、推奨値を意味しません。操作の結果を試していない箇所を「動作確認済み」とは扱いません。</p>
+<p>英語版画面を使った従来の詳細説明は<a href="macwhisper-guide.html">既存の完全操作ガイド</a>で読めます。そちらには13.21.4・15.4の画像があり、本ページのv5画像とは区別してください。</p></section><section class="chapter" id="start"><p class="eyebrow">操作ガイド 02</p><h2>日本語版を開き、画面の場所を覚える</h2>
+<ol class="steps"><li>用意済みの<strong>「MacWhisper 日本語版 v5」</strong>ショートカットから起動します。Dockのアイコンは正規版を指している場合があるため、英語表示なら起動元を確認します。</li><li>ホームの左側に「ホーム」「処理待ち」「文字起こし」「会議」「音声入力」「最近削除した項目」「フォルダ」が表示されます。</li><li>設定を開くときは、ホーム左下の<strong>「設定」</strong>を押します。設定内の「設定を検索」で項目を探せます。</li><li>設定の<strong>「このアプリについて」</strong>で版番号を確認します。今回の実機は15.5（1550）で「MacWhisperは最新です」と表示されました。</li></ol>
+<p class="evidence"><b>実機の表示確認</b>：2026年10月12日23:03の最新版表示。以後の最新版はアプリの更新確認と公式更新履歴で確認してください。</p>
+<figure class="shot"><a href="screenshots/ja-v5/home-controls.png" target="_blank" rel="noopener"><img src="screenshots/ja-v5/home-controls.png" alt="ホームの操作部分。私的な文字起こし履歴を含む下部は切り取っています" loading="lazy"></a><figcaption>ホームの操作部分。私的な文字起こし履歴を含む下部は切り取っています。2026年10月12日、非公式日本語UI試作版v5で撮影。クリックで原寸表示。</figcaption></figure><figure class="shot"><a href="screenshots/ja-v5/about.png" target="_blank" rel="noopener"><img src="screenshots/ja-v5/about.png" alt="「このアプリについて」の15.5（1550）と最新版表示" loading="lazy"></a><figcaption>「このアプリについて」の15.5（1550）と最新版表示。2026年10月12日、非公式日本語UI試作版v5で撮影。クリックで原寸表示。</figcaption></figure>
+<figure class="shot"><a href="screenshots/ja-v5/general.png" target="_blank" rel="noopener"><img src="screenshots/ja-v5/general.png" alt="一般設定と日本語の設定一覧" loading="lazy"></a><figcaption>一般設定と日本語の設定一覧。2026年10月12日、非公式日本語UI試作版v5で撮影。クリックで原寸表示。</figcaption></figure><h3>起動時に英語や認証が出たとき</h3>
+<p><strong>Move to Applications Folder</strong> は「アプリケーションフォルダへ移動」、<strong>Do Not Move</strong> は「移動しない」です。別コピーをそのまま使う今回の試作では、正規版を置き換えないよう「Do Not Move」を選んで起動した記録があります。移動先に正規版がある状態で安易に置き換えないでください。</p>
+<p>最初にキーチェーン確認が2〜3回表示され、本人が許可したとの記録があります。その後の再起動で取得した画面には認証がありませんでしたが、今後出ないとは保証できません。キーチェーン確認を解除・無効化したわけではありません。</p>
+<p>過去の試作では画面停止が発生し、診断記録でキーチェーン読み出し待ちを確認しています。停止した場合は、その画面と直前の操作を記録して原因を調べます。</p><p class="evidence"><b>公式更新履歴</b>：<a href="https://macwhisper-site.vercel.app/release_notes.html">最新版のリリースノート</a></p></section><section class="chapter" id="file"><p class="eyebrow">操作ガイド 03</p><h2>音声ファイルを文字起こしする</h2>
+<p class="chapter-lead">基本の流れは「モデルを選ぶ」「言語を選ぶ」「ファイルを開く」「結果を確認する」です。以下は公式の操作説明とv5の表示を対応させた手順であり、試作版での文字起こし完了テストはしていません。</p>
+<ol class="steps"><li>ホーム上部の<strong>「モデル」</strong>を開き、使うモデルを選びます。APIを使わずMacで処理したい場合は、ローカルモデルを選びます。</li><li>上部の<strong>「言語」</strong>で音声の言語を選びます。日本語の表示が <strong>Japanese</strong> のまま残る場合があります。</li><li><strong>「ファイルを開く」</strong>を押して音声・動画ファイルを選びます。複数ファイルを開くときは、まとめて選択するかアプリへドラッグします。</li><li>処理状況は<strong>「処理待ち」</strong>、保存された結果は<strong>「文字起こし」</strong>で確認します。完成後は音声と照合し、名前や数字、話者の取り違えを直してから書き出します。</li></ol>
+<div class="note"><strong>文字起こしと翻訳を区別：</strong>日本語のまま出したい場合、「文字起こしを常に英語に翻訳する」がオンになっていないか確認します。場所は「設定」の「詳細設定」内にある「文字起こしの詳細設定」です。</div>
+<h3>どの入り口を使うか</h3>
+<div class="table-scroll"><table><thead><tr><th>ホームの表示</th><th>用途</th><th>試作版での確認範囲</th></tr></thead><tbody>
+<tr><td>ファイルを開く</td><td>保存済み音声・動画を読み込む</td><td>入口の表示確認</td></tr>
+<tr><td>YouTube・音声・動画ファイルのURLを入力…</td><td>対応URLから取り込む</td><td>入力欄の表示確認。ダウンロード未試験</td></tr>
+<tr><td>ボイスメモ</td><td>マイクから録音する</td><td>入口の表示確認。録音未試験</td></tr>
+<tr><td>アプリの音声</td><td>他のアプリの音を録音する</td><td>入口の表示確認。録音未試験</td></tr>
+<tr><td>Podcast</td><td>話者ごとの別トラックを扱う</td><td>入口の表示確認。処理未試験</td></tr>
+<tr><td>リアルタイム字幕</td><td>音声をその場で字幕表示する</td><td>入口の表示確認。処理未試験</td></tr>
+</tbody></table></div>
+<p class="evidence"><b>公式ヘルプ</b>：<a href="https://docs.macwhisper.com/article/19-batch-transcription">複数ファイルの読み込み・一括文字起こし</a></p><p class="evidence"><b>公式ヘルプ</b>：<a href="https://docs.macwhisper.com/article/32-automatic-speaker-recognition-in-macwhisper">Podcastと通常の話者識別の違い</a></p>
+<p>URL取り込みの詳しい説明は<a href="macwhisper-guide.html">従来ガイドのホーム画面</a>と公式ヘルプを参照してください。ホームの「一括書き出し」と、複数ファイルを開いて行う一括文字起こしは区別します。</p></section><section class="chapter" id="models"><p class="eyebrow">操作ガイド 04</p><h2>ローカルモデルと話者を選ぶ</h2>
+<ol class="steps"><li>ホームの<strong>「モデルを管理」</strong>、または設定の<strong>「ローカルモデル」</strong>を開きます。</li><li>未取得なら<strong>「ダウンロード」</strong>、取得済みなら<strong>「使用する」</strong>を押します。チェック印が現在の選択です。</li><li>話した人を分けたい場合は、モデル名の下に<strong>「話者識別」</strong>があるか確認します。</li><li>設定の<strong>「話者」</strong>で<strong>「話者識別を有効にする」</strong>を確認します。話者識別用モデルは「詳細設定」の「文字起こしの詳細設定」にあります。</li></ol>
+<figure class="shot"><a href="screenshots/ja-v5/models.png" target="_blank" rel="noopener"><img src="screenshots/ja-v5/models.png" alt="ローカルモデル一覧。「話者識別」「使用する」「ダウンロード」の位置" loading="lazy"></a><figcaption>ローカルモデル一覧。「話者識別」「使用する」「ダウンロード」の位置。2026年10月12日、非公式日本語UI試作版v5で撮影。クリックで原寸表示。</figcaption></figure><figure class="shot"><a href="screenshots/ja-v5/speakers.png" target="_blank" rel="noopener"><img src="screenshots/ja-v5/speakers.png" alt="「話者識別を有効にする」の設定" loading="lazy"></a><figcaption>「話者識別を有効にする」の設定。2026年10月12日、非公式日本語UI試作版v5で撮影。クリックで原寸表示。</figcaption></figure>
+<p class="evidence"><b>実機の表示確認</b>：このMacではQwen3-ASR 1.7Bが選択され、「話者識別」と表示されました。Large v3 Turboにも同じ表示があります。「Japanese」の言語特化モデルにはこの表示がありません。この一覧は撮影したMacの状態で、全機種共通の一覧ではありません。</p>
+<p>公式ヘルプは、完成後の話者名変更や、同じ人が別話者になったときの統合を説明しています。ただし記事は旧版で、対応モデルの説明が15.5と異なります。15系のNemotron・Pyannote選択、Nemotronの最大8話者は公式更新履歴と実機表示を根拠にします。</p>
+<p>話者名は完成した文字起こしのサイドバーから変更できます。同じ人が別々に分かれた場合は話者名を右クリックして統合する、というのが公式の手順です。v5の編集画面での統合・修正結果は未試験です。</p>
+<p class="evidence"><b>公式ヘルプ</b>：<a href="https://docs.macwhisper.com/article/32-automatic-speaker-recognition-in-macwhisper">話者名の変更・話者の統合</a></p><p class="evidence"><b>公式更新履歴</b>：<a href="https://macwhisper-site.vercel.app/release_notes.html">15.2・15.3の話者識別変更</a></p></section><section class="chapter" id="export"><p class="eyebrow">操作ガイド 05</p><h2>テキスト・字幕を書き出す</h2>
+<p>普通の文章として読むなら<strong>「文字起こし .txt」</strong>、字幕の時刻を残すなら<strong>「字幕 .srt」</strong>を選びます。SRTは「開始時刻・終了時刻・文章」を組にして保存する字幕形式です。</p>
+<ol class="steps"><li>完成した文字起こしを開き、ファイルメニューの<strong>「書き出す」</strong>から必要な種類を選びます。v5では「文字起こし」「字幕」の表示を確認した記録があります。</li><li>標準の形式を確認・編集するときは、設定の<strong>「書き出し形式」</strong>を開きます。各行の下向きボタンで設定を展開できます。</li><li>複数の完成結果をまとめて出すときは<strong>「一括書き出し」</strong>を使います。その標準の形式は、設定の同名ページで選択します。</li><li>完成のたびに出力したい場合は、設定の<strong>「自動書き出し」</strong>で形式と保存先フォルダを確認します。監視フォルダの書き出し設定は別の場所にもあるため、目的に合う設定を確認します。</li></ol>
+<figure class="shot"><a href="screenshots/ja-v5/export-formats.png" target="_blank" rel="noopener"><img src="screenshots/ja-v5/export-formats.png" alt="日本語名「文字起こし .txt」「字幕 .srt」と、英語の副題" loading="lazy"></a><figcaption>日本語名「文字起こし .txt」「字幕 .srt」と、英語の副題。2026年10月12日、非公式日本語UI試作版v5で撮影。クリックで原寸表示。</figcaption></figure><figure class="shot"><a href="screenshots/ja-v5/batch-export.png" target="_blank" rel="noopener"><img src="screenshots/ja-v5/batch-export.png" alt="一括書き出しで使用する標準形式" loading="lazy"></a><figcaption>一括書き出しで使用する標準形式。2026年10月12日、非公式日本語UI試作版v5で撮影。クリックで原寸表示。</figcaption></figure>
+<div class="note"><strong>表示名だけを変更しています。</strong>この環境の2形式は名前だけ日本語化しました。形式、保存先、オン・オフは変更していません。Transcriptは「文字起こし」、Subtitlesは「字幕」、Segmentsは「区間」の意味です。生成される副題やメニューには英語が残ります。</div>
+<p class="evidence"><b>実機の表示確認</b>：形式一覧、一括書き出し、自動書き出しの設定を確認。自動書き出しには「録音音声」「AI要約」「書き出し先」もあります。保存先を含む画面は、私的なパスを公開しないため掲載していません。実際の書き出しは未試験です。</p>
+<p class="evidence"><b>公式ヘルプ</b>：<a href="https://docs.macwhisper.com/article/19-batch-transcription">一括処理で複数の書き出し形式を指定する</a></p><p class="evidence"><b>公式ヘルプ</b>：<a href="https://docs.macwhisper.com/article/35-automatically-transcribing-files-in-watch-folders">監視フォルダの書き出し設定</a></p></section><section class="chapter" id="watch"><p class="eyebrow">操作ガイド 06</p><h2>監視フォルダで自動処理する</h2>
+<p>録音ファイルを指定フォルダに入れたとき、自動で文字起こしするPro機能です。フォルダを指定するだけで、そこにあるファイルが処理対象になり得るため、最初は短い検証用ファイルで確認します。</p>
+<ol class="steps"><li>設定の<strong>「監視フォルダ」</strong>を開き、<strong>「別のフォルダを追加」</strong>から対象を選びます。初回の追加ボタンは公式ヘルプではAdd Watch Folderと呼ばれています。</li><li><strong>「監視フォルダを自動で文字起こし」</strong>を確認します。</li><li>サブフォルダも対象にする場合は<strong>「フォルダの階層数」</strong>を確認します。<strong>「履歴に保存」</strong>は自動処理した結果を履歴に残す項目です。</li><li><strong>「書き出し形式を追加」</strong>で出力形式を指定します。ここには <strong>Transcript (txt)</strong>、<strong>Subtitles (srt)</strong> の英語が残る場合があります。</li></ol>
+<p class="evidence"><b>実機の表示確認</b>：上記の日本語項目をv5で確認。監視先の私的なフォルダ名を含むため画像は掲載しません。監視対象・設定は変更せず、ファイル投入の動作試験もしていません。</p>
+<p>公式ヘルプでは、自動処理をオフにすると新規ファイルを通知し、アプリで処理を開始する流れを説明しています。15.3の更新履歴には、コピー完了待ちや新規サブフォルダへの対応改善があります。</p>
+<p class="evidence"><b>公式ヘルプ</b>：<a href="https://docs.macwhisper.com/article/35-automatically-transcribing-files-in-watch-folders">監視フォルダの設定と自動書き出し</a></p><p class="evidence"><b>公式更新履歴</b>：<a href="https://macwhisper-site.vercel.app/release_notes.html">15.3の監視フォルダ改善</a></p></section><section class="chapter" id="meetings"><p class="eyebrow">操作ガイド 07</p><h2>会議の録音・音声入力を設定する</h2>
+<h3>会議のリアルタイム文字起こし</h3>
+<p>設定の<strong>「会議の録音」</strong>にある<strong>「会議をリアルタイムで文字起こし」</strong>は、録音しながら話者付きの文章を小さなウインドウへ表示する項目です。画面の説明ではParakeet・WhisperKit・Qwen3-ASRなど対応モデルが必要です。</p>
+<figure class="shot"><a href="screenshots/ja-v5/meetings.png" target="_blank" rel="noopener"><img src="screenshots/ja-v5/meetings.png" alt="「会議をリアルタイムで文字起こし」とマイクの使用許可の案内" loading="lazy"></a><figcaption>「会議をリアルタイムで文字起こし」とマイクの使用許可の案内。2026年10月12日、非公式日本語UI試作版v5で撮影。クリックで原寸表示。</figcaption></figure>
+<p>公式の基本手順は、会議検出を設定し、検出通知から録音を開始して、終了後の録音を文字起こしする流れです。15系ではライブ表示が加わり、15.4では設定場所が「会議の録音」へ移りました。macOS 26以降の録音権限の変更もあるため、旧ヘルプの画面収録権限の説明だけで判断せず、使用環境の案内を確認します。</p>
+<p class="evidence"><b>実機の表示確認</b>：今回の試作版は「マイクの使用許可」の案内を表示しています。権限を追加していないため、その先の設定・録音・ライブ表示の動作は未確認です。会議録音は画面上でもベータ版の注意書きがあります。</p>
+<p class="evidence"><b>公式ヘルプ</b>：<a href="https://docs.macwhisper.com/article/30-record-meetings">会議検出・録音の基本手順</a></p><p class="evidence"><b>公式更新履歴</b>：<a href="https://macwhisper-site.vercel.app/release_notes.html">15系のライブ会議・権限・設定場所の変更</a></p>
+<h3>音声入力</h3><p>音声入力は、話した内容を他のアプリの文字入力欄へ入れる機能です。設定の<strong>「音声入力」</strong>から始めます。今回の画面は<strong>「マイクの使用許可」</strong>と<strong>「アクセシビリティの許可」</strong>の案内までを確認しました。許可後のショートカット設定や貼り付けの動作は未確認です。</p>
+<figure class="shot"><a href="screenshots/ja-v5/dictation-permissions.png" target="_blank" rel="noopener"><img src="screenshots/ja-v5/dictation-permissions.png" alt="音声入力に必要な権限の案内。許可操作は実施していません" loading="lazy"></a><figcaption>音声入力に必要な権限の案内。許可操作は実施していません。2026年10月12日、非公式日本語UI試作版v5で撮影。クリックで原寸表示。</figcaption></figure><p class="evidence"><b>公式ヘルプ</b>：<a href="https://docs.macwhisper.com/article/14-how-to-use-the-dictation-feature">音声入力の基本的な使い方</a></p></section><section class="chapter" id="advanced"><p class="eyebrow">操作ガイド 08</p><h2>詳細設定：表示・精度・メモリを調整する</h2>
+<p>設定の<strong>「詳細設定」</strong>には、<strong>「文字起こしの詳細設定」</strong>、<strong>「音声入力の設定」</strong>、<strong>「録音の詳細設定」</strong>、<strong>「保存領域とデータ」</strong>があります。まず変更したい目的に対応するページを開きます。</p>
+<figure class="shot"><a href="screenshots/ja-v5/advanced-menu.png" target="_blank" rel="noopener"><img src="screenshots/ja-v5/advanced-menu.png" alt="詳細設定の入り口と「保存領域とデータ」" loading="lazy"></a><figcaption>詳細設定の入り口と「保存領域とデータ」。2026年10月12日、非公式日本語UI試作版v5で撮影。クリックで原寸表示。</figcaption></figure><figure class="shot"><a href="screenshots/ja-v5/advanced-transcription.png" target="_blank" rel="noopener"><img src="screenshots/ja-v5/advanced-transcription.png" alt="文字起こし詳細の表示・話者モデル・再処理設定" loading="lazy"></a><figcaption>文字起こし詳細の表示・話者モデル・再処理設定。2026年10月12日、非公式日本語UI試作版v5で撮影。クリックで原寸表示。</figcaption></figure>
+<div class="table-scroll"><table><thead><tr><th>日本語の項目</th><th>意味・使う場面</th></tr></thead><tbody>
+<tr><td>従来の文字起こし表示に戻す</td><td>新しいエディターから従来の表示へ切り替える設定です</td></tr>
+<tr><td>話者識別モデル</td><td>話した人を分けるためのモデル。撮影時はNemotronでした。画面では最大8話者で、変更は次の文字起こしからと説明しています</td></tr>
+<tr><td>認識の確かさが低い区間を再処理</td><td>不確かな認識や繰り返しがある区間を、処理条件を変えて再処理する設定です。音声を聞かずに正解を保証する機能ではありません</td></tr>
+<tr><td>重複する区間を除去</td><td>誤認識による繰り返しを減らしますが、本当に2回話した文章も除かれる可能性があると画面で説明しています</td></tr>
+<tr><td>モデルの読み込み</td><td>文字起こし用AIの準備をいつ行うかを指定します</td></tr>
+<tr><td>待機中にメモリから解放</td><td>使っていないモデルを作業用メモリから外すまでの時間。録音ファイルやダウンロード済みモデルを削除する意味ではありません</td></tr>
+</tbody></table></div>
+<figure class="shot"><a href="screenshots/ja-v5/memory.png" target="_blank" rel="noopener"><img src="screenshots/ja-v5/memory.png" alt="ファイルの文字起こし・音声入力・会議とリアルタイム字幕を別々に指定するメモリ設定" loading="lazy"></a><figcaption>ファイルの文字起こし・音声入力・会議とリアルタイム字幕を別々に指定するメモリ設定。2026年10月12日、非公式日本語UI試作版v5で撮影。クリックで原寸表示。</figcaption></figure>
+<p class="evidence"><b>実機の表示確認</b>：上記はv5の設定ラベルと画面内の説明を整理したものです。設定値を変更せず撮影しており、精度や処理時間への効果は試験していません。</p>
+<p class="evidence"><b>公式更新履歴</b>：<a href="https://macwhisper-site.vercel.app/release_notes.html">15.1以降の詳細設定・15.2のメモリ設定</a></p></section><section class="chapter" id="vad"><p class="eyebrow">操作ガイド 09</p><h2>VADと文脈設定を理解する</h2>
+<p class="chapter-lead">VADは「声がある部分と無音を見分ける処理」です。長い録音の無音を処理しないようにする設定ですが、エンジンごとに場所と扱いが違います。</p>
+<h3>Whisper C++</h3><p>「文字起こしの詳細設定」下部の<strong>「Whisper C++」</strong>を開きます。</p>
+<ul><li><strong>「音声区間の検出（VAD）を使う」</strong>は、発話を検出して無音を処理対象から除く設定です。</li><li><strong>「直前の文章を文脈として使う」</strong>は、前の認識結果を次の区間へ渡し、名前や表記の統一に役立てる設定です。音質が悪いと誤りを引き継ぐ可能性があると画面で説明しています。</li><li><strong>「Whisperへのプロンプト」</strong>は名前・専門用語・表記のヒント欄です。要約用AIプロンプトとは別です。</li></ul>
+<figure class="shot"><a href="screenshots/ja-v5/whisper-cpp.png" target="_blank" rel="noopener"><img src="screenshots/ja-v5/whisper-cpp.png" alt="Whisper C++のVAD・文脈・用語ヒント" loading="lazy"></a><figcaption>Whisper C++のVAD・文脈・用語ヒント。2026年10月12日、非公式日本語UI試作版v5で撮影。クリックで原寸表示。</figcaption></figure>
+<h3>Parakeet / WhisperKit</h3><p>「文字起こしの詳細設定」下部の<strong>「Parakeet / WhisperKit」</strong>を開きます。<strong>「WhisperKitの音声区間検出（VAD）を有効にする」</strong>はWhisperKit専用です。画面には、Parakeetは常にVADを使うことと、処理中の区間順序が一時的に乱れても完了時に整うという注意書きがあります。</p>
+<figure class="shot"><a href="screenshots/ja-v5/whisperkit.png" target="_blank" rel="noopener"><img src="screenshots/ja-v5/whisperkit.png" alt="WhisperKit専用VADと注意書き" loading="lazy"></a><figcaption>WhisperKit専用VADと注意書き。2026年10月12日、非公式日本語UI試作版v5で撮影。クリックで原寸表示。</figcaption></figure>
+<p class="evidence"><b>実機の表示確認</b>：この節は設定画面の説明に基づきます。今回、オン・オフによる速度・精度の比較はしていません。GPU・並列処理数などの上級設定も、画像の値をそのまま推奨値としないでください。</p><p class="evidence"><b>公式更新履歴</b>：<a href="https://macwhisper-site.vercel.app/release_notes.html">15.1のWhisper C++ VAD・文脈設定</a></p></section><section class="chapter" id="cleanup"><p class="eyebrow">操作ガイド 10</p><h2>誤認識を検索・置換し、不要な区間を除く</h2>
+<h3>検索と置換</h3><ol class="steps"><li>設定の<strong>「検索と置換」</strong>を開き、右上の<strong>「＋」</strong>から置換項目を追加します。</li><li>認識されやすい誤表記と、置き換えたい正しい表記を登録します。例：「マックウィスパー」を「MacWhisper」にそろえる、といった用途です。</li><li><strong>「大文字・小文字を区別」</strong>、<strong>「独立した単語のみ置換」</strong>の条件を確認します。部分一致の置換は意図しない語まで変えることがあるので、短い語の指定に注意します。</li></ol>
+<p>公式ヘルプでは、この全体置換は<strong>新しい文字起こし</strong>に適用され、過去の文章を一括で直す機能ではないと説明しています。</p>
+<figure class="shot"><a href="screenshots/ja-v5/replace.png" target="_blank" rel="noopener"><img src="screenshots/ja-v5/replace.png" alt="検索と置換の追加ボタンと一致条件" loading="lazy"></a><figcaption>検索と置換の追加ボタンと一致条件。2026年10月12日、非公式日本語UI試作版v5で撮影。クリックで原寸表示。</figcaption></figure><p class="evidence"><b>公式ヘルプ</b>：<a href="https://docs.macwhisper.com/article/37-find-and-replace-in-transcriptions">全体置換の追加・一致条件・適用範囲</a></p>
+<h3>除外する区間</h3><p>設定の<strong>「除外する区間」</strong>には<strong>「不要な区間を除外」</strong>、<strong>「文字起こしを自動整形」</strong>、<strong>「除外区間をまとめて追加」</strong>があります。画面の説明では、登録した語句に<strong>完全一致する区間</strong>を取り除きます。単語の誤表記を直す「検索と置換」とは使い分けます。</p>
+<figure class="shot"><a href="screenshots/ja-v5/ignored.png" target="_blank" rel="noopener"><img src="screenshots/ja-v5/ignored.png" alt="除外する区間と「除外区間をまとめて追加」" loading="lazy"></a><figcaption>除外する区間と「除外区間をまとめて追加」。2026年10月12日、非公式日本語UI試作版v5で撮影。クリックで原寸表示。</figcaption></figure>
+<p>「除外区間をまとめて追加」は、語句を1行ずつ貼り付けて追加するための操作です。「初期設定に戻す」はカスタムのリストを消す操作です。今回どちらも実行していません。</p>
+<p class="evidence"><b>実機の表示確認</b>：項目と説明を確認しただけで、新規ルールの追加や適用結果の検証は未実施です。</p><p class="evidence"><b>公式更新履歴</b>：<a href="https://macwhisper-site.vercel.app/release_notes.html">15.4の除外区間一括追加</a></p></section><section class="chapter" id="ai"><p class="eyebrow">操作ガイド 11</p><h2>AIサービス・日本語プロンプト・翻訳</h2>
+<p>音声を文章にする<strong>文字起こしモデル</strong>と、完成した文章を要約・言い換えする<strong>AIサービス</strong>は別の設定です。日本語化は表示の変更で、AI契約や利用権が追加されるわけではありません。</p>
+<h3>AIサービスを確認する</h3><ol class="steps"><li>設定のAI欄にある<strong>「サービス」</strong>を開きます。</li><li><strong>「登録済みサービス」</strong>を確認します。追加する場合は<strong>「サービスを追加」</strong>か、使いたいサービスのボタンを選びます。</li><li>オンラインサービスは、その提供元のAPIキーや対応モデルが必要です。キーを入れる前に利用条件と料金を確認します。</li><li>完成した文字起こしのAI機能で、利用するサービスとプロンプトを選びます。選択だけでなく、どの接続先へ文章を送るかを確認します。</li></ol>
+<figure class="shot"><a href="screenshots/ja-v5/services.png" target="_blank" rel="noopener"><img src="screenshots/ja-v5/services.png" alt="AIサービスの日本語見出しと、英語で残るFoundation Model・Needs API key" loading="lazy"></a><figcaption>AIサービスの日本語見出しと、英語で残るFoundation Model・Needs API key。2026年10月12日、非公式日本語UI試作版v5で撮影。クリックで原寸表示。</figcaption></figure>
+<p><strong>Needs API key</strong> は「APIキーが必要」、<strong>Foundation Model</strong> はAppleの端末内AIモデルの表示です。Apple、Ollama、LMStudioの利用可否はMacや別途の設定に依存します。今回の画面には無効な項目もあり、接続成功を意味しません。</p>
+<p>公式ヘルプでは、一般向けのChatGPT・Claude・Gemini契約にAPI利用やクレジットが必ず含まれるわけではなく、外部サービスの料金はMacWhisperの購入と別と説明しています。外部AIを実行すると文字起こしと指示文が接続先へ送られます。今回、追加・接続テスト・送信はしていません。</p>
+<p class="evidence"><b>公式ヘルプ</b>：<a href="https://docs.macwhisper.com/article/58-setting-up-ai-providers-in-macwhisper">AIサービスの設定・契約・送信先の説明</a></p>
+<h3>プロンプトの日本語名</h3><p>設定の<strong>「プロンプト」</strong>で確認できます。以下の10件は、この環境で保存済みタイトルだけを変更しました。指示本文は変更していません。同じv5の再起動後も保持された記録があります。</p>
+<figure class="shot"><a href="screenshots/ja-v5/prompts.png" target="_blank" rel="noopener"><img src="screenshots/ja-v5/prompts.png" alt="日本語名に変更した10件のAIプロンプト" loading="lazy"></a><figcaption>日本語名に変更した10件のAIプロンプト。2026年10月12日、非公式日本語UI試作版v5で撮影。クリックで原寸表示。</figcaption></figure>
+<div class="table-scroll"><table><thead><tr><th>元の英語名</th><th>この環境の日本語名</th></tr></thead><tbody><tr><td>Bullet Points</td><td>箇条書きにする</td></tr><tr><td>Improve Grammar &amp; Punctuation</td><td>文法と句読点を整える</td></tr><tr><td>Split into paragraphs</td><td>段落に分ける</td></tr><tr><td>Highlight Key Points</td><td>重要な点を強調する</td></tr><tr><td>Extract Questions</td><td>質問を抽出する</td></tr><tr><td>Identify Emotions</td><td>感情を分析する</td></tr><tr><td>Generate FAQ</td><td>よくある質問を作る</td></tr><tr><td>Extract Statistics</td><td>統計情報を抽出する</td></tr><tr><td>Paraphrase Content</td><td>内容を言い換える</td></tr><tr><td>Create a mindmap</td><td>マインドマップを作る</td></tr></tbody></table></div>
+<p>この日本語名は翻訳リソースだけで変わったものではなく、アプリの編集画面で保存した名前です。正規版にも影響する可能性があります。元に戻す場合はタイトルだけを元の英語名へ戻します。「初期設定に戻す」は指示や独自設定まで戻る可能性があるため、表示名の復元には使いません。</p>
+<h3>翻訳設定</h3><p>設定の<strong>「翻訳」</strong>には<strong>「原文と翻訳を並べて表示」</strong>、<strong>「動画プレーヤーには翻訳字幕のみ表示」</strong>があります。<strong>Transcript And Segments</strong> は「全文と区間の両方」、最近使った言語の <strong>Japanese</strong> は「日本語」です。</p>
+<figure class="shot"><a href="screenshots/ja-v5/translation.png" target="_blank" rel="noopener"><img src="screenshots/ja-v5/translation.png" alt="翻訳設定。英語のまま残るモード名と言語名" loading="lazy"></a><figcaption>翻訳設定。英語のまま残るモード名と言語名。2026年10月12日、非公式日本語UI試作版v5で撮影。クリックで原寸表示。</figcaption></figure>
+<p class="evidence"><b>実機の表示確認</b>：翻訳画面の説明ではAppleの標準翻訳機能を使う場合、翻訳元・翻訳先の言語のダウンロードが必要です。翻訳の実行・品質検証はしていません。</p></section><section class="chapter" id="english"><p class="eyebrow">操作ガイド 12</p><h2>英語が残る場所の早見表</h2>
+<p>以下は今回の通常の翻訳追加で日本語に変わらなかった表示です。原因は項目ごとに未確定です。固定文字列・保存済みデータ・外部配信などが考えられますが、「すべて固定英語」「すべて外部配信」とは断定しません。正式な解消は開発元へローカライズ対応を依頼する方針です。</p>
+<div class="table-scroll"><table><thead><tr><th>場所・英語表示</th><th>日本語の意味</th></tr></thead><tbody>
+<tr><td>Move to Applications Folder / Do Not Move</td><td>アプリケーションフォルダへ移動／移動しない</td></tr>
+<tr><td>開発予定のカード本文・Developing / Investigating</td><td>カード本文は英語のまま。状態は「開発中」／「調査中」</td></tr>
+<tr><td>モデル検索欄のSearch...</td><td>検索…</td></tr>
+<tr><td>Qwen3-ASRの一部説明</td><td>速度より精度を重視するモデルで、Parakeetより大きく遅い、という画面内説明</td></tr>
+<tr><td>Transcript And Segments</td><td>全文と区間の両方</td></tr>
+<tr><td>最近使った言語のJapanese</td><td>日本語。モデル名としてのJapaneseは名称として区別します</td></tr>
+<tr><td>Transcript / Subtitles</td><td>文字起こし／字幕。形式の副題や一括・自動書き出し等で残ります</td></tr>
+<tr><td>Foundation Model / Needs API key</td><td>Appleの端末内AIモデル／APIキーが必要</td></tr>
+<tr><td>None・一部の入力欄の案内</td><td>なし。入力欄の補助説明も一部は英語のままです</td></tr>
+<tr><td>書き出しメニューのSegments</td><td>区間ごとの書き出し</td></tr>
+</tbody></table></div>
+<p>WhisperKit、Nemotron、Neural Engineなどの製品・技術名、拡張子、URLは原表記を使います。利用者の文字起こし本文そのものを、日本語化対象の画面ラベルとは数えません。</p>
+<h3>外部連携の用語</h3><p>設定の<strong>「外部連携」</strong>では「IPアドレス」「ポート番号」「APIトークン」「親ページのURL」などの日本語表示を確認した作業記録があります。IPアドレスは接続先、ポート番号は接続口、APIトークンは接続を許す秘密の文字列です。実際の値を含む画像は掲載せず、接続テストや送信の成功も確認していません。</p>
+<p class="evidence"><b>作業記録と実機の表示確認</b>：監査記録で残存英語を照合。モデル検索、翻訳、書き出し形式、AIサービスの英語は今回の撮影画面でも確認しています。全メニューの再確認を終えたという意味ではありません。</p></section><section class="chapter" id="status"><p class="eyebrow">操作ガイド 13</p><h2>日本語化の範囲・困ったとき・参照先</h2>
+<h3>翻訳の項目数</h3><p>英語の翻訳テーブル由来2,398項目と、他言語テーブル・実画面などからの追加392項目を合わせて、統合翻訳データは<strong>2,790項目</strong>です。別に複数形2テーブル、アプリ情報・権限説明など19項目があります。製品名や内部識別子など原表記を保持した項目も含み、項目数は全画面の日本語化完了を意味しません。</p>
+<h3>よくある困りごと</h3>
+<details><summary>日本語版を開いたつもりなのに英語になる</summary><p>正規版や過去の試作を開いている可能性があります。用意済みの「MacWhisper 日本語版 v5」から起動し直す前に、現在のアプリで録音・処理が動いていないか確認してください。同じ識別子のため設定と履歴は完全には分離されていません。</p></details>
+<details><summary>日本語名が正規版にも出る</summary><p>標準プロンプト10件と書き出し形式2件は、共有され得る保存済みデータの名前を変更しています。プロンプトはタイトルだけ英語名へ戻せます。書き出し形式は名前欄だけを空にすると標準の案内名へ戻る、という復元方法を記録しています。本文や形式は変えません。</p></details>
+<details><summary>キーチェーン確認や画面停止が出る</summary><p>試作版の再署名や起動元の違いで確認が出る可能性があります。認証が今後出ないとは保証できません。過去にはキーチェーン読み出し待ちを診断しています。表示内容と直前の操作を記録し、認証保護を無効化する対応は行わないでください。重要な作業は正規版を使用します。</p></details>
+<details><summary>更新後に日本語が消えた</summary><p>更新後も日本語化が維持される保証はありません。本体の版番号と実際の表示を確認してください。このガイドの撮影対象は15.5を元にしたv5です。</p></details>
+<details><summary>15.5で音声を読み込めない・結果が空になる</summary><p>公式更新履歴には音声読み込みの改善と、Plaud等の拡張子と内容が異なる音声への修正があります。v5での処理成功を確認したわけではありません。正規版の最新版で確認し、ファイルが再生できるかと表示されるエラーを記録してください。</p></details>
+<h3>配布について</h3><p>このページは操作説明です。アプリ本体や翻訳ZIPのダウンロードは提供しません。権利・開発元の条件を確認する前の公開配布は行いません。翻訳のみの提出用ZIPは7ファイルで、アプリ本体・録音・文字起こし・認証情報・ユーザー設定を含まない検査記録があり、開発元へはまだ送信していません。</p>
+<h3>参照先</h3><ul>
+<li><a href="https://macwhisper.helpscoutdocs.com">指定の英語版公式ヘルプ</a>（現在は<a href="https://docs.macwhisper.com/">docs.macwhisper.com</a>へ転送されます）</li>
+<li><a href="https://macwhisper-site.vercel.app/release_notes.html">公式リリースノート</a>：15.5の最新変更、旧ヘルプとの差分</li>
+<li><a href="macwhisper-guide.html">従来の完全操作ガイド</a>：英語版画面を基準にした詳細。旧版画像を含みます</li></ul>
+<p>仕様は公式ヘルプを優先し、旧版の説明と15.5に差がある部分は公式更新履歴と実機表示を分けて記載しました。本ページでは第三者の外部解説は根拠に使用していません。試作版固有の説明はローカルの作業記録と実機確認に基づきます。個人のローカル保存場所は掲載していません。</p></section></main><footer class="page-footer"><div class="wrap"><p>MacWhisper非公式日本語UI試作版v5対応 — 日本語操作ガイド<br>開発元の公式マニュアルではありません。掲載画像はv5の実画面です。</p><p><a href="macwhisper-guide.html">従来の詳細ガイド</a> · <a href="https://docs.macwhisper.com/">公式ヘルプ</a> · <a href="#status">検証範囲と参照先</a></p></div></footer><a class="toplink" href="#top">目次へ戻る ↑</a><script>const q=document.querySelector('#toc-filter');q.addEventListener('input',()=>{let n=0;document.querySelectorAll('.toc-grid a').forEach(a=>{a.hidden=!a.textContent.toLowerCase().includes(q.value.trim().toLowerCase());if(!a.hidden)n++});document.querySelector('#no-results').hidden=n>0});</script></body></html>

@@ -1,3 +1,21 @@
+# 日本語UI試作版v5 操作ガイド追記（2026-10-12）
+
+この節が現在の最新状態。下の15.4記事は従来ガイドの履歴。
+
+- 目的: 既存の説明書サイトを、MacWhisper 15.5（1550）を元にした非公式日本語UI試作版v5に対応させる。
+- 主要ファイル: `japanese-ui-v5.html`（13章の日本語操作ガイド）、`screenshots/ja-v5/`（実機画像19点）。`index.html` と `macwhisper-guide.html` には新ガイドへの案内を追加し、旧版基準を明示。
+- 正規版との違い、同一アプリ識別子による設定/履歴共有、残る英語、表示名10+2件、キーチェーンの経緯、未検証範囲を掲載。重要な録音は正規版を使う案内。
+- 全19画像は当日のv5実画面。ホームは履歴部分を切り取り、監視先/自動書き出し先の実パスを含む画面は非掲載。ライセンス/APIキーは掲載しない。
+- アプリ本体・翻訳ZIP・個人保存場所は新ページへ追加していない。設定/権限/録音/文字起こし/送信を変更・実行していない。
+- 公式ヘルプを読み、古い対応モデル/会議説明は15系公式更新履歴と実機を区別。調査記録はプロジェクトの `research/macwhisper-ja-v5-guide/`。
+- 検証済み: 3 HTMLの画像参照・内部リンク・ID重複のエラー0。新ガイド19画像参照。空白エラーなし。ブラウザで1280px/390pxの表示、検索・空結果・説明開閉、代表画像の読み込みを確認。390pxでページ全体の横はみ出しなし。
+- 公開: これから既存GitHub Pagesへ反映。公開成功は追記まで未確認。
+- 未解決: v5での録音/文字起こし/外部送信の動作試験、全画面/全警告の確認は未実施。ページで未確認と明示。
+- 次回: 公式更新と実機の版を確認。新ガイドと19画像を基準に更新し、従来の英語版画像と混同しない。認証や重要な録音に関わる検証は目的を決めて実施する。
+- 確認コマンド: `git status --short`、`git diff --check`、`python3 -m http.server 4173 --bind 127.0.0.1`、`gh run list --limit 3`。
+
+---
+
 # HANDOFF
 
 ## 最初に読む結論
@@ -22,13 +40,13 @@ MacWhisper日本語説明書サイトは、2026年10月9日時点の最新版Mac
 
 - 公開サイト: <https://oharu-ai.github.io/macwhisper-help/>
 - GitHubリポジトリ: <https://github.com/Oharu-AI/macwhisper-help>
-- ローカルのリポジトリ: `/Users/oharu/.codex/.chatgpt-projects/g-p-6a2aa12454348191afeb4d161224f99b/site`
-- この引き継ぎファイル: `/Users/oharu/.codex/.chatgpt-projects/g-p-6a2aa12454348191afeb4d161224f99b/site/HANDOFF.md`
-- 公開トップページの原稿: `/Users/oharu/.codex/.chatgpt-projects/g-p-6a2aa12454348191afeb4d161224f99b/site/index.html`
-- 同内容の別入口: `/Users/oharu/.codex/.chatgpt-projects/g-p-6a2aa12454348191afeb4d161224f99b/site/macwhisper-guide.html`
-- サイト画像: `/Users/oharu/.codex/.chatgpt-projects/g-p-6a2aa12454348191afeb4d161224f99b/site/screenshots`
-- 今回の調査記録: `/Users/oharu/.codex/.chatgpt-projects/g-p-6a2aa12454348191afeb4d161224f99b/research/macwhisper-latest-2026-10-09`
-- 旧14.8.1調査記録: `/Users/oharu/.codex/.chatgpt-projects/g-p-6a2aa12454348191afeb4d161224f99b/research/macwhisper-14-8-1-update`
+- ローカルのリポジトリ: `<project-root>/site`
+- この引き継ぎファイル: `<project-root>/site/HANDOFF.md`
+- 公開トップページの原稿: `<project-root>/site/index.html`
+- 同内容の別入口: `<project-root>/site/macwhisper-guide.html`
+- サイト画像: `<project-root>/site/screenshots`
+- 今回の調査記録: `<project-root>/research/macwhisper-latest-2026-10-09`
+- 旧14.8.1調査記録: `<project-root>/research/macwhisper-14-8-1-update`
 
 `sources/` はChatGPTプロジェクトから同期される読み取り専用資料であり、サイト本体ではない。サイト更新は必ず上記 `site/` リポジトリで行う。
 
@@ -87,7 +105,7 @@ MacWhisper日本語説明書サイトは、2026年10月9日時点の最新版Mac
 ## 次回再開時の手順
 
 1. この `HANDOFF.md` を読む。
-2. `cd /Users/oharu/.codex/.chatgpt-projects/g-p-6a2aa12454348191afeb4d161224f99b/site` を実行する。
+2. `cd <project-root>/site` を実行する。
 3. `git status --short` と `git log -1 --oneline` で状態を確認する。
 4. 公開サイト、公式更新フィード、公式リリースノート、実機Aboutを比較する。
 5. `index.html` を編集し、同内容を `macwhisper-guide.html` に反映する。
