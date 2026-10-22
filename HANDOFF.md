@@ -124,3 +124,10 @@ cmp -s index.html macwhisper-guide.html
 python3 -m http.server 4173
 gh run list --limit 5
 ```
+# 2026-10-22 公式変更点の照合・修正
+
+- 公式ヘルプ https://docs.macwhisper.com/ と公式リリースノート https://macwhisper-site.vercel.app/release_notes.html を確認。後者の先頭は15.7.1。公式更新フィードはWeb取得失敗のため、配信対象や公開日時までは断定しない。
+- index.html/macwhisper-guide.htmlに15.5〜15.7.1の差分を追記。15.6正式日本語UI、会議自動停止、Qwen進捗、M1再試行、15.7.1のNeural Engineへ戻す変更と設定非表示、カメラ対処、音声読み込み修正を記載。旧画像は流用し撮影版を現行版と偽らない。
+- japanese-ui-v5.htmlの先頭説明を履歴資料へ変更し、試作起動手順を現行手順として使わないよう警告。試作翻訳の公式採用は未確認と明記。
+- 保存場所はこのsiteフォルダ、公開先は既存GitHub Pages。アプリ/録音/設定は今回変更なし。
+

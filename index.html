@@ -292,14 +292,14 @@
 </style>
 </head>
 <body>
-<aside aria-label="日本語試作版の操作ガイド" style="background:#fff2e4;color:#3f2919;border-bottom:3px solid #b86122;padding:22px 20px;font-family:-apple-system,BlinkMacSystemFont,sans-serif;line-height:1.8"><div style="max-width:1000px;margin:auto"><strong>MacWhisper非公式日本語UI試作版v5対応（15.5）</strong><br>日本語の実画面に合わせた新しい操作説明を追加しました。正規版との違い、残る英語、未検証の機能を分けて掲載しています。<br><a href="japanese-ui-v5.html" style="color:#74380e;font-weight:bold">スクリーンショット付き日本語操作ガイドを開く →</a><br><small>このページの本文は英語版15.4を基準とした従来の詳細ガイドです。旧版画像を含みます。</small></div></aside>
+<aside aria-label="正式な日本語対応のお知らせ" style="background:#fff2e4;color:#3f2919;border-bottom:3px solid #b86122;padding:22px 20px;font-family:-apple-system,BlinkMacSystemFont,sans-serif;line-height:1.8"><div style="max-width:1000px;margin:auto"><strong>15.6から正規版が日本語UIに対応しました</strong><br>日本語化のために非公式試作版を使う必要はありません。開発元の正規版をご利用ください。<br><a href="#updates" style="color:#74380e;font-weight:bold">15.7.1までの公式変更点を見る →</a><br><small>既存の詳細説明・画像は15.4以前の内容を含みます。<a href="japanese-ui-v5.html">旧試作版の画面資料</a>は履歴資料であり、現在の起動・設定手順としては使用しないでください。</small></div></aside>
 
 
 <header class="hero" id="top">
   <div class="wrap">
     <div class="hero-mark">MacWhisper Pro ── 完全操作ガイド</div>
     <h1>各画面・各項目を<em>ひとつずつ</em>解説</h1>
-    <p class="sub">バージョン 15.4 (1540) ・ MacBook Air M5 ・ 2026年10月更新</p>
+    <p class="sub">公式変更点：15.7.1まで確認 ・ 既存画面：15.4以前 ・ 2026年10月22日更新</p>
   </div>
 </header>
 
@@ -308,7 +308,7 @@
   <div class="wrap">
     <div class="toc-title">目次 TABLE OF CONTENTS</div>
     <div class="toc-grid">
-      <a href="#updates"><span class="toc-num">NEW</span>15.4 更新情報</a>
+      <a href="#updates"><span class="toc-num">NEW</span>15.7.1までの更新情報</a>
       <a href="#ch1"><span class="toc-num">01</span>ホーム画面</a>
       <a href="#ch2"><span class="toc-num">02</span>アプリ音声録音</a>
       <a href="#ch3"><span class="toc-num">03</span>ポッドキャスト</a>
@@ -346,7 +346,20 @@
 ══════════════════════════════════════ -->
 <section class="chapter" id="updates">
   <div class="ch-eyebrow">VERSION UPDATE ── OCTOBER 2026</div>
-  <h2>15.4までに追加・改善されたこと</h2>
+  <h2>15.7.1までに追加・改善されたこと</h2>
+  <div class="update-banner">
+    <h3>2026年10月22日：公式更新履歴との照合</h3>
+    <p>以下は公式リリースノートの確認結果です。15.7.1の全機能をこのサイトで実機検証したという意味ではありません。</p>
+    <ul>
+      <li><strong>15.6：</strong>日本語を含む6言語のUIを追加。ヘルプメニューから翻訳への意見を送れます。会議終了10秒後に録音を止めるオプションと、Qwen3-ASRの進捗表示修正も追加されました。</li>
+      <li><strong>15.7：</strong>M1のQwen3-ASRでNeural Engineが途中停止した場合の自動再試行を1回追加。安定性の調査は継続中で、問題時は「ヘルプ → ログを書き出す」から診断ログを取得します。起動直後のファイル読み込みや録音中の通話切り替えによる不具合も修正されました。</li>
+      <li><strong>15.7.1：</strong>15.7で行ったライブ処理のGPU移行を、不安定との報告を受けてNeural Engineへ戻しました。対応する詳細設定も一時的に非表示です。15.7向けの「Neural Engineを空ける」設定を探す必要はありません。</li>
+      <li><strong>会議のカメラが重い場合：</strong>Zoom・Teams側の背景ぼかしを止め、必要ならMacのコントロールセンターにあるビデオエフェクトを使う案内が追加されています。</li>
+      <li><strong>15.5の音声読み込み修正：</strong>Plaud由来の、拡張子がmp3でも中身がOpusの録音などを内容から判定するよう改善。詳細設定のモノラル変換・Argmax Audio Pipelineの2項目は削除され、共通の音声読み込みへ統合されています。</li>
+    </ul>
+    <p class="source-note">出典：<a href="https://macwhisper-site.vercel.app/release_notes.html">開発元の公式リリースノート（15.5〜15.7.1）</a>。日本語UIの正式追加は確認済みですが、当サイトの試作翻訳が採用されたかは未確認です。</p>
+  </div>
+  <h3>15.4以前の変更点（従来ガイド）</h3>
   <p class="chapter-lead">2026年10月7日（日本時間）公開の15.4では、Qwen3-ASRの対応拡大、録音中の容量不足対策、SpaceXAIのクラウド文字起こし、会議録音の権限・音質改善が行われました。15系で加わった大きな変更もまとめて確認します。</p>
 
   <div class="update-banner">
