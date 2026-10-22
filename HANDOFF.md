@@ -130,4 +130,5 @@ gh run list --limit 5
 - index.html/macwhisper-guide.htmlに15.5〜15.7.1の差分を追記。15.6正式日本語UI、会議自動停止、Qwen進捗、M1再試行、15.7.1のNeural Engineへ戻す変更と設定非表示、カメラ対処、音声読み込み修正を記載。旧画像は流用し撮影版を現行版と偽らない。
 - japanese-ui-v5.htmlの先頭説明を履歴資料へ変更し、試作起動手順を現行手順として使わないよう警告。試作翻訳の公式採用は未確認と明記。
 - 保存場所はこのsiteフォルダ、公開先は既存GitHub Pages。アプリ/録音/設定は今回変更なし。
-
+- 本文コミット213a9bcをmainへ送信。Pages run 39711294341。index/macwhisper-guideの一致を確認。今回ブラウザ描画検証は未実施。差分検査でHANDOFF末尾空行の警告が出たため、この追記で修正。
+- Pages run 39711294341 success、公開HTMLに正式日本語対応と15.7.1更新案内が反映されたことをcurlで確認。3ページの重複ID/内部アンカー/画像実在検査成功（40/40/19画像）。最終git diff --check成功。
